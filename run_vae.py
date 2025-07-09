@@ -12,6 +12,8 @@ set_seed(42)
 # Try to use GPU if available
 device = get_device() 
 
+log(f"Using the device: {device}") 
+
 # Get dataset directory from command line argument
 data_dir = parse_dataset_arg() 
 
@@ -62,14 +64,15 @@ class SimpleVAE(nn.Module):
 # Model loading and training setup
 vae = SimpleVAE().to(device)
 optimizer = torch.optim.Adam(vae.parameters(), lr=1e-3)
-num_epochs = 5
+latent_dim = 128
+epochs = 5
 
 # Training
 log("Starting VAE training...")
 frames = []
-z = torch.randn(1,128).to(device) # Created once and used throughout training
+z_fixed = torch.randn(1, latent_dim).to(device) # Created once and used throughout training
 vae.train()
-for epoch in range(num_epochs):
+for epoch in range(epochs):
     for imgs in dataloader:
         imgs = imgs.to(device)
         recons, mu, logvar = vae(imgs)
@@ -82,12 +85,12 @@ for epoch in range(num_epochs):
     # Save the frame
     vae.eval()
     with torch.no_grad():
-        vae_sample = vae.decode(z)[0].cpu() # Always use the same z
+        vae_sample = vae.decode(z_fixed)[0].cpu() # Always use the same input
         vae_sample = vae_sample.permute(1,2,0).numpy()
         vae_sample = (vae_sample * 255).astype("uint8")
         frames.append(vae_sample)
     vae.train()
-    log("Epoch {}/{} completed - Loss: {:.4f}".format(epoch+1, num_epochs, loss.item()))
+    log("Epoch {}/{} completed - Loss: {:.4f}".format(epoch+1, epochs, loss.item()))
 
 # Save the gif and the last frame separately
 plt.imsave("vae_final.png", frames[-1])

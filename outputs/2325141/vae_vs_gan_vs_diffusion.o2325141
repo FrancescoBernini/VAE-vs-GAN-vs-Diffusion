@@ -1,0 +1,28 @@
+--- Informazioni sul Job Slurm ---
+Nome Job: vae_vs_gan_vs_diffusion
+ID Job: 2325141
+Partizione: gpu
+QoS: gpu
+GPU Richieste: 1
+Memoria Richiesta: 16384
+CPU per Task: 24
+Data e Ora Inizio Esecuzione: Wed Jul  9 19:18:11 CEST 2025
+-----------------------------------
+L'ambiente Conda diffusion-env esiste già.
+denoising-diffusion-pytorch già installato.
+Esecuzione di run_vae.py...
+[2025-07-09 19:18:56] - Using the device: cuda
+[2025-07-09 19:18:56] - Dataset with 29843 images loaded from /hpc/scratch/francesco.bernini1/AI2425/datasets/cats/Data.
+[2025-07-09 19:18:57] - Starting VAE training...
+[2025-07-09 19:19:21] - Epoch 1/5 completed - Loss: 0.2751
+[2025-07-09 19:19:44] - Epoch 2/5 completed - Loss: 0.2624
+[2025-07-09 19:20:07] - Epoch 3/5 completed - Loss: 0.2354
+[2025-07-09 19:20:29] - Epoch 4/5 completed - Loss: 0.2543
+[2025-07-09 19:20:51] - Epoch 5/5 completed - Loss: 0.2292
+[2025-07-09 19:20:51] - VAE completed.
+Tempo impiegato per run_vae.py: 00:02:07
+
+--- Riepilogo Esecuzione Job ---
+Data e Ora Fine Esecuzione: Wed Jul  9 19:20:53 CEST 2025
+Tempo Totale Impiegato per il Job: 00:02:07
+------------------------------

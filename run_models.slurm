@@ -1,10 +1,12 @@
 #!/bin/bash
 
 #SBATCH --job-name=vae_vs_gan_vs_diffusion
+#SBATCH --output="outputs/%j/%x.o%j"
+#SBATCH --error="outputs/%j/%x.e%j"
 #SBATCH --partition=gpu
 #SBATCH --qos=gpu
-#SBATCH --gres=gpu:p100:1
-##SBATCH --gres=gpu:a100_40g:1
+##SBATCH --gres=gpu:p100:1
+#SBATCH --gres=gpu:a100_40g:1
 ##SBATCH --gres=gpu:a100_80g:1
 #SBATCH --mem=16G
 #SBATCH --cpus-per-task=24
@@ -23,10 +25,9 @@ JOB_OUTPUT_DIR="$OUTPUTS_DIR/$SLURM_JOB_ID"
 # Crea la sottocartella specifica per questo job
 mkdir -p "$JOB_OUTPUT_DIR"
 
-# Aggiorna i percorsi di output ed errore di Slurm
-# Ora i file .o e .e verranno salvati nella cartella del job
-#SBATCH --output="${JOB_OUTPUT_DIR}/%x.o%j"
-#SBATCH --error="${JOB_OUTPUT_DIR}/%x.e%j"
+# Spostati nella cartella di output specifica del job
+# Tutti gli output successivi (es. file .gif) verranno salvati qui
+cd "$JOB_OUTPUT_DIR"
 
 # --- Stampa delle risorse richieste ---
 echo "--- Informazioni sul Job Slurm ---"
@@ -34,10 +35,9 @@ echo "Nome Job: $SLURM_JOB_NAME"
 echo "ID Job: $SLURM_JOB_ID"
 echo "Partizione: $SLURM_JOB_PARTITION"
 echo "QoS: $SLURM_JOB_QOS"
-echo "GPU Richieste: $SLURM_GPUS" # Questa variabile dipende dalla configurazione di Slurm
-echo "Memoria Richiesta: $SLURM_MEM" # O SLURM_MEM_PER_CPU se usi quella direttiva
+echo "GPU Richieste: $SLURM_JOB_GPUS"
+echo "Memoria Richiesta: $SLURM_MEM_PER_NODE"
 echo "CPU per Task: $SLURM_CPUS_PER_TASK"
-echo "Tempo Massimo Richiesto: $SLURM_TIMELIMIT" # Formato HH:MM:SS
 echo "Data e Ora Inizio Esecuzione: $(date)"
 echo "-----------------------------------"
 
@@ -86,6 +86,7 @@ if ! conda env list | grep -q "$ENV_NAME"; then
     source activate "$ENV_NAME"
     echo "Installo i pacchetti necessari..."
     conda install -y pytorch torchvision matplotlib imageio -c pytorch
+    conda config --add channels defaults
 else
     echo "L'ambiente Conda $ENV_NAME esiste già."
 fi
@@ -115,10 +116,6 @@ calculate_and_print_time() {
     printf "Tempo impiegato per %s: %02d:%02d:%02d\n" "$script_name" "$hours" "$minutes" "$seconds"
 }
 
-# Spostati nella cartella di output specifica del job
-# Tutti gli output successivi (es. file .gif) verranno salvati qui
-cd "$JOB_OUTPUT_DIR"
-
 # Registra il tempo di inizio per calcolare la durata totale
 START_TIME_TOTAL=$(date +%s)
 
@@ -144,9 +141,6 @@ if $RUN_DIFFUSION; then
     calculate_and_print_time "$START_TIME_DIFFUSION" "run_diffusion.py"
 fi
 
-# Torna alla directory originale
-cd ../../
-
 # --- Calcolo e stampa del tempo totale impiegato del Job ---
 END_TIME_TOTAL=$(date +%s)
 TOTAL_SECONDS_JOB=$((END_TIME_TOTAL - START_TIME_TOTAL))
@@ -160,3 +154,6 @@ printf "\n--- Riepilogo Esecuzione Job ---\n"
 printf "Data e Ora Fine Esecuzione: $(date)\n"
 printf "Tempo Totale Impiegato per il Job: %02d:%02d:%02d\n" "$HOURS_JOB" "$MINUTES_JOB" "$SECONDS_JOB"
 echo "------------------------------"
+
+# Torna alla directory originale
+cd ../../
