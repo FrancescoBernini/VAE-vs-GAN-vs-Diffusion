@@ -1,8 +1,5 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
-"""
-Script di generazione immagini con Diffusion (realistico, con GIF di progressione e output finale).
-"""
+# Diffusion
+
 import os
 import sys
 import torch

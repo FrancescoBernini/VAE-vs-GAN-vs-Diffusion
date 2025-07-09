@@ -1,8 +1,5 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
-"""
-Script di generazione immagini con GAN (completo e didattico).
-"""
+# GAN
+
 import os
 import sys
 import torch
