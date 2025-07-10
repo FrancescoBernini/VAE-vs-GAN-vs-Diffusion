@@ -18,8 +18,8 @@ log(f"Using the device: {device}")
 data_dir = parse_dataset_arg() 
 
 # Load dataset
-dataset = CustomImageDataset(data_dir)
-dataloader = get_dataloader(data_dir)
+dataset = CustomImageDataset(data_dir, "gan")
+dataloader = get_dataloader(data_dir, "gan")
 
 log(f"Dataset with {len(dataset)} images loaded from {data_dir}.")
 
@@ -64,12 +64,12 @@ class SimpleDiscriminator(nn.Module):
 generator = SimpleGenerator().to(device)
 discriminator = SimpleDiscriminator().to(device)
 optimizer_G = torch.optim.Adam(generator.parameters(), lr=0.0002, betas=(0.5, 0.999))
-optimizer_D = torch.optim.Adam(discriminator.parameters(), lr=0.0002, betas=(0.5, 0.999))
+optimizer_D = torch.optim.Adam(discriminator.parameters(), lr=0.0001, betas=(0.5, 0.999))
 loss_fn = nn.BCELoss()
 best_loss_g = float('inf')
 best_frame = None
 latent_dim = 128
-epochs = 5
+epochs = 50
 
 # Training
 log("Starting GAN training...")
@@ -81,22 +81,22 @@ for epoch in range(epochs):
     for imgs in dataloader:
         imgs = imgs.to(device)
         batch_size = imgs.size(0)
-        valid = torch.ones(batch_size, 1, device=device)
-        fake = torch.zeros(batch_size, 1, device=device)
+        real_labels_smoothed = torch.full((batch_size, 1), 0.9, device=device)
+        fake_labels_smoothed = torch.full((batch_size, 1), 0.1, device=device)
         # Train Generator
         optimizer_G.zero_grad()
         z = torch.randn(batch_size, latent_dim, 1, 1, device=device)
         gen_imgs = generator(z)
         validity = discriminator(gen_imgs)
-        g_loss = loss_fn(validity, valid)
+        g_loss = loss_fn(validity, real_labels_smoothed)
         g_loss.backward()
         optimizer_G.step()
         # Train Discriminator
         optimizer_D.zero_grad()
         real_validity = discriminator(imgs)
-        d_real_loss = loss_fn(real_validity, valid)
+        d_real_loss = loss_fn(real_validity, real_labels_smoothed)
         fake_validity = discriminator(gen_imgs.detach())
-        d_fake_loss = loss_fn(fake_validity, fake)
+        d_fake_loss = loss_fn(fake_validity, fake_labels_smoothed)
         d_loss = (d_real_loss + d_fake_loss) / 2
         d_loss.backward()
         optimizer_D.step()

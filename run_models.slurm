@@ -10,7 +10,7 @@
 ##SBATCH --gres=gpu:a100_80g:1
 #SBATCH --mem=16G
 #SBATCH --cpus-per-task=24
-#SBATCH --time=0-00:30:00
+#SBATCH --time=0-02:00:00
 
 # --- Preparazione della directory di output ---
 

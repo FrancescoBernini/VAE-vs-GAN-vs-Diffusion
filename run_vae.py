@@ -18,8 +18,8 @@ log(f"Using the device: {device}")
 data_dir = parse_dataset_arg() 
 
 # Load dataset
-dataset = CustomImageDataset(data_dir)
-dataloader = get_dataloader(data_dir)
+dataset = CustomImageDataset(data_dir, "vae")
+dataloader = get_dataloader(data_dir, "vae")
 
 log(f"Dataset with {len(dataset)} images loaded from {data_dir}.")
 
@@ -65,7 +65,7 @@ class SimpleVAE(nn.Module):
 vae = SimpleVAE().to(device)
 optimizer = torch.optim.Adam(vae.parameters(), lr=1e-3)
 latent_dim = 128
-epochs = 5
+epochs = 50
 
 # Training
 log("Starting VAE training...")

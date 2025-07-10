@@ -41,12 +41,17 @@ def set_seed(seed=42):
         cudnn.benchmark = False
 
 class CustomImageDataset(Dataset):
-    def __init__(self, image_dir):
+    def __init__(self, image_dir, model_type):
         self.image_paths = glob(os.path.join(image_dir, "*.png"))
-        self.transform = transforms.Compose([
-            transforms.ToTensor(),
-            transforms.Normalize((0.5, 0.5, 0.5), (0.5, 0.5, 0.5))
-        ]) # Every channel will be normalized to [0, 1] and then to [-1, 1] for tanh compatibility
+        if model_type == "vae":
+            self.transform = transforms.Compose([
+                transforms.ToTensor(),
+            ]) 
+        elif model_type == "gan":
+            self.transform = transforms.Compose([
+                transforms.ToTensor(),
+                transforms.Normalize((0.5, 0.5, 0.5), (0.5, 0.5, 0.5))
+            ]) # Every channel will be normalized to [0, 1] and then to [-1, 1] for tanh compatibility
 
     def __len__(self):
         return len(self.image_paths)
@@ -55,15 +60,25 @@ class CustomImageDataset(Dataset):
         img = Image.open(self.image_paths[idx]).convert("RGB")
         return self.transform(img)
 
-def get_dataloader(data_dir):
-    dataset = CustomImageDataset(data_dir)
-    return DataLoader(
-        dataset,
-        batch_size=256,
-        shuffle=True,
-        pin_memory=True,
-        num_workers=os.cpu_count() // 2 if os.cpu_count() else 4
-    )
+def get_dataloader(data_dir, model_type):
+    dataset = CustomImageDataset(data_dir, model_type)
+    if model_type == "vae":
+        return DataLoader(
+            dataset,
+            batch_size=64,
+            shuffle=True,
+            pin_memory=True,
+            num_workers=os.cpu_count() // 2 if os.cpu_count() else 4
+        )
+    elif model_type == "gan":
+        return DataLoader(
+            dataset,
+            batch_size=64,
+            shuffle=True,
+            pin_memory=True,
+            num_workers=os.cpu_count() // 2 if os.cpu_count() else 4
+        )
+    
 
 def get_fixed_noise(latent_dim=128, seed=42, device=None):
     torch.manual_seed(seed)
