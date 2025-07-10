@@ -1,0 +1,11 @@
+--- Informazioni sul Job Slurm ---
+Nome Job: vae_vs_gan_vs_diffusion
+ID Job: 2325506
+Partizione: gpu
+QoS: gpu
+GPU Richieste: 0
+Memoria Richiesta: 16384
+CPU per Task: 24
+Data e Ora Inizio Esecuzione: Thu Jul 10 23:06:01 CEST 2025
+-----------------------------------
+L'ambiente Conda diffusion-env esiste già.

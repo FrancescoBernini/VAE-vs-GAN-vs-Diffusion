@@ -1,0 +1,8 @@
+Traceback (most recent call last):
+  File "/hpc/home/francesco.bernini1/AI2425/VAE_vs_GAN_vs_Diffusion/outputs/2325151/../../run_vae.py", line 21, in <module>
+    dataset = CustomImageDataset(data_dir, image_size=64)
+TypeError: __init__() got an unexpected keyword argument 'image_size'
+Traceback (most recent call last):
+  File "/hpc/home/francesco.bernini1/AI2425/VAE_vs_GAN_vs_Diffusion/outputs/2325151/../../run_gan.py", line 21, in <module>
+    dataset = CustomImageDataset(data_dir, image_size=64)
+TypeError: __init__() got an unexpected keyword argument 'image_size'

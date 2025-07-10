@@ -1,0 +1,23 @@
+--- Informazioni sul Job Slurm ---
+Nome Job: vae_vs_gan_vs_diffusion
+ID Job: 2325151
+Partizione: gpu
+QoS: gpu
+GPU Richieste: 1
+Memoria Richiesta: 16384
+CPU per Task: 24
+Data e Ora Inizio Esecuzione: Wed Jul  9 21:06:54 CEST 2025
+-----------------------------------
+L'ambiente Conda diffusion-env esiste già.
+denoising-diffusion-pytorch già installato.
+Esecuzione di run_vae.py...
+[2025-07-09 21:08:10] - Using the device: cuda
+Tempo impiegato per run_vae.py: 00:00:12
+Esecuzione di run_gan.py...
+[2025-07-09 21:08:19] - Using the device: cuda
+Tempo impiegato per run_gan.py: 00:00:09
+
+--- Riepilogo Esecuzione Job ---
+Data e Ora Fine Esecuzione: Wed Jul  9 21:08:20 CEST 2025
+Tempo Totale Impiegato per il Job: 00:00:21
+------------------------------

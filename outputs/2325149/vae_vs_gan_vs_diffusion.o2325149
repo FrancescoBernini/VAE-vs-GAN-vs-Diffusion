@@ -1,0 +1,69 @@
+--- Informazioni sul Job Slurm ---
+Nome Job: vae_vs_gan_vs_diffusion
+ID Job: 2325149
+Partizione: gpu
+QoS: gpu
+GPU Richieste: 1
+Memoria Richiesta: 16384
+CPU per Task: 24
+Data e Ora Inizio Esecuzione: Wed Jul  9 19:29:53 CEST 2025
+-----------------------------------
+L'ambiente Conda diffusion-env esiste già.
+denoising-diffusion-pytorch già installato.
+Esecuzione di run_vae.py...
+[2025-07-09 19:30:36] - Using the device: cuda
+[2025-07-09 19:30:36] - Dataset with 29843 images loaded from /hpc/scratch/francesco.bernini1/AI2425/datasets/cats/Data.
+[2025-07-09 19:30:36] - Starting VAE training...
+[2025-07-09 19:31:01] - Epoch 1/20 completed - Loss: 0.2751
+[2025-07-09 19:31:25] - Epoch 2/20 completed - Loss: 0.2624
+[2025-07-09 19:31:49] - Epoch 3/20 completed - Loss: 0.2354
+[2025-07-09 19:32:12] - Epoch 4/20 completed - Loss: 0.2543
+[2025-07-09 19:32:36] - Epoch 5/20 completed - Loss: 0.2292
+[2025-07-09 19:32:59] - Epoch 6/20 completed - Loss: 0.2477
+[2025-07-09 19:33:22] - Epoch 7/20 completed - Loss: 0.2330
+[2025-07-09 19:33:45] - Epoch 8/20 completed - Loss: 0.2309
+[2025-07-09 19:34:08] - Epoch 9/20 completed - Loss: 0.2375
+[2025-07-09 19:34:30] - Epoch 10/20 completed - Loss: 0.2084
+[2025-07-09 19:34:53] - Epoch 11/20 completed - Loss: 0.2121
+[2025-07-09 19:35:16] - Epoch 12/20 completed - Loss: 0.2381
+[2025-07-09 19:35:38] - Epoch 13/20 completed - Loss: 0.2176
+[2025-07-09 19:36:01] - Epoch 14/20 completed - Loss: 0.2247
+[2025-07-09 19:36:23] - Epoch 15/20 completed - Loss: 0.2158
+[2025-07-09 19:36:47] - Epoch 16/20 completed - Loss: 0.2400
+[2025-07-09 19:37:10] - Epoch 17/20 completed - Loss: 0.2417
+[2025-07-09 19:37:32] - Epoch 18/20 completed - Loss: 0.2268
+[2025-07-09 19:37:55] - Epoch 19/20 completed - Loss: 0.2171
+[2025-07-09 19:38:18] - Epoch 20/20 completed - Loss: 0.2139
+[2025-07-09 19:38:18] - VAE completed.
+Tempo impiegato per run_vae.py: 00:07:53
+Esecuzione di run_gan.py...
+[2025-07-09 19:38:44] - Using the device: cuda
+[2025-07-09 19:38:44] - Dataset with 29843 images loaded from /hpc/scratch/francesco.bernini1/AI2425/datasets/cats/Data.
+[2025-07-09 19:38:44] - Starting GAN training...
+[2025-07-09 19:39:09] - Epoch 1/20 completed - Loss D: 0.1436, Loss G: 2.4713
+[2025-07-09 19:39:31] - Epoch 2/20 completed - Loss D: 0.3651, Loss G: 4.0089
+[2025-07-09 19:39:55] - Epoch 3/20 completed - Loss D: 0.4958, Loss G: 1.2478
+[2025-07-09 19:40:18] - Epoch 4/20 completed - Loss D: 0.3681, Loss G: 2.0216
+[2025-07-09 19:40:40] - Epoch 5/20 completed - Loss D: 0.4298, Loss G: 2.4249
+[2025-07-09 19:41:04] - Epoch 6/20 completed - Loss D: 0.5225, Loss G: 0.9449
+[2025-07-09 19:41:27] - Epoch 7/20 completed - Loss D: 0.3450, Loss G: 1.3928
+[2025-07-09 19:41:50] - Epoch 8/20 completed - Loss D: 0.4026, Loss G: 2.0939
+[2025-07-09 19:42:14] - Epoch 9/20 completed - Loss D: 0.4902, Loss G: 0.9863
+[2025-07-09 19:42:37] - Epoch 10/20 completed - Loss D: 0.6984, Loss G: 0.9622
+[2025-07-09 19:43:00] - Epoch 11/20 completed - Loss D: 0.3846, Loss G: 1.8852
+[2025-07-09 19:43:23] - Epoch 12/20 completed - Loss D: 0.3544, Loss G: 1.9399
+[2025-07-09 19:43:46] - Epoch 13/20 completed - Loss D: 0.8800, Loss G: 2.8960
+[2025-07-09 19:44:09] - Epoch 14/20 completed - Loss D: 0.3635, Loss G: 2.4434
+[2025-07-09 19:44:31] - Epoch 15/20 completed - Loss D: 0.4947, Loss G: 2.9850
+[2025-07-09 19:44:54] - Epoch 16/20 completed - Loss D: 0.3666, Loss G: 2.1517
+[2025-07-09 19:45:16] - Epoch 17/20 completed - Loss D: 0.5211, Loss G: 1.2632
+[2025-07-09 19:45:39] - Epoch 18/20 completed - Loss D: 0.5372, Loss G: 1.4761
+[2025-07-09 19:46:03] - Epoch 19/20 completed - Loss D: 0.5176, Loss G: 1.4974
+[2025-07-09 19:46:26] - Epoch 20/20 completed - Loss D: 0.5607, Loss G: 3.5819
+[2025-07-09 19:46:27] - GAN completed.
+Tempo impiegato per run_gan.py: 00:08:09
+
+--- Riepilogo Esecuzione Job ---
+Data e Ora Fine Esecuzione: Wed Jul  9 19:46:28 CEST 2025
+Tempo Totale Impiegato per il Job: 00:16:02
+------------------------------

@@ -1,0 +1,129 @@
+--- Informazioni sul Job Slurm ---
+Nome Job: vae_vs_gan_vs_diffusion
+ID Job: 2325223
+Partizione: gpu
+QoS: gpu
+GPU Richieste: 1
+Memoria Richiesta: 16384
+CPU per Task: 24
+Data e Ora Inizio Esecuzione: Thu Jul 10 01:16:02 CEST 2025
+-----------------------------------
+L'ambiente Conda diffusion-env esiste già.
+denoising-diffusion-pytorch già installato.
+Esecuzione di run_vae.py...
+[2025-07-10 01:17:25] - Using the device: cuda
+[2025-07-10 01:17:25] - Dataset with 29843 images loaded from /hpc/scratch/francesco.bernini1/AI2425/datasets/cats/Data.
+[2025-07-10 01:17:26] - Starting VAE training...
+[2025-07-10 01:18:02] - Epoch 1/50 completed - Loss: 0.0377
+[2025-07-10 01:18:26] - Epoch 2/50 completed - Loss: 0.0344
+[2025-07-10 01:18:50] - Epoch 3/50 completed - Loss: 0.0321
+[2025-07-10 01:19:14] - Epoch 4/50 completed - Loss: 0.0323
+[2025-07-10 01:19:39] - Epoch 5/50 completed - Loss: 0.0343
+[2025-07-10 01:20:06] - Epoch 6/50 completed - Loss: 0.0339
+[2025-07-10 01:20:32] - Epoch 7/50 completed - Loss: 0.0363
+[2025-07-10 01:20:57] - Epoch 8/50 completed - Loss: 0.0353
+[2025-07-10 01:21:23] - Epoch 9/50 completed - Loss: 0.0319
+[2025-07-10 01:21:47] - Epoch 10/50 completed - Loss: 0.0306
+[2025-07-10 01:22:11] - Epoch 11/50 completed - Loss: 0.0342
+[2025-07-10 01:22:35] - Epoch 12/50 completed - Loss: 0.0342
+[2025-07-10 01:23:00] - Epoch 13/50 completed - Loss: 0.0305
+[2025-07-10 01:23:25] - Epoch 14/50 completed - Loss: 0.0344
+[2025-07-10 01:23:50] - Epoch 15/50 completed - Loss: 0.0286
+[2025-07-10 01:24:14] - Epoch 16/50 completed - Loss: 0.0370
+[2025-07-10 01:24:38] - Epoch 17/50 completed - Loss: 0.0275
+[2025-07-10 01:25:01] - Epoch 18/50 completed - Loss: 0.0327
+[2025-07-10 01:25:24] - Epoch 19/50 completed - Loss: 0.0335
+[2025-07-10 01:25:47] - Epoch 20/50 completed - Loss: 0.0315
+[2025-07-10 01:26:10] - Epoch 21/50 completed - Loss: 0.0295
+[2025-07-10 01:26:35] - Epoch 22/50 completed - Loss: 0.0304
+[2025-07-10 01:27:02] - Epoch 23/50 completed - Loss: 0.0270
+[2025-07-10 01:27:23] - Epoch 24/50 completed - Loss: 0.0326
+[2025-07-10 01:27:46] - Epoch 25/50 completed - Loss: 0.0302
+[2025-07-10 01:28:13] - Epoch 26/50 completed - Loss: 0.0342
+[2025-07-10 01:28:40] - Epoch 27/50 completed - Loss: 0.0301
+[2025-07-10 01:29:07] - Epoch 28/50 completed - Loss: 0.0306
+[2025-07-10 01:29:33] - Epoch 29/50 completed - Loss: 0.0318
+[2025-07-10 01:30:00] - Epoch 30/50 completed - Loss: 0.0314
+[2025-07-10 01:30:25] - Epoch 31/50 completed - Loss: 0.0331
+[2025-07-10 01:30:50] - Epoch 32/50 completed - Loss: 0.0293
+[2025-07-10 01:31:15] - Epoch 33/50 completed - Loss: 0.0325
+[2025-07-10 01:31:38] - Epoch 34/50 completed - Loss: 0.0339
+[2025-07-10 01:31:58] - Epoch 35/50 completed - Loss: 0.0365
+[2025-07-10 01:32:23] - Epoch 36/50 completed - Loss: 0.0326
+[2025-07-10 01:32:49] - Epoch 37/50 completed - Loss: 0.0321
+[2025-07-10 01:33:16] - Epoch 38/50 completed - Loss: 0.0313
+[2025-07-10 01:33:43] - Epoch 39/50 completed - Loss: 0.0323
+[2025-07-10 01:34:09] - Epoch 40/50 completed - Loss: 0.0328
+[2025-07-10 01:34:35] - Epoch 41/50 completed - Loss: 0.0339
+[2025-07-10 01:35:00] - Epoch 42/50 completed - Loss: 0.0290
+[2025-07-10 01:35:24] - Epoch 43/50 completed - Loss: 0.0348
+[2025-07-10 01:35:48] - Epoch 44/50 completed - Loss: 0.0338
+[2025-07-10 01:36:11] - Epoch 45/50 completed - Loss: 0.0304
+[2025-07-10 01:36:32] - Epoch 46/50 completed - Loss: 0.0314
+[2025-07-10 01:36:54] - Epoch 47/50 completed - Loss: 0.0331
+[2025-07-10 01:37:20] - Epoch 48/50 completed - Loss: 0.0372
+[2025-07-10 01:37:46] - Epoch 49/50 completed - Loss: 0.0355
+[2025-07-10 01:38:13] - Epoch 50/50 completed - Loss: 0.0320
+[2025-07-10 01:38:14] - VAE completed.
+Tempo impiegato per run_vae.py: 00:21:03
+Esecuzione di run_gan.py...
+[2025-07-10 01:38:54] - Using the device: cuda
+[2025-07-10 01:38:54] - Dataset with 29843 images loaded from /hpc/scratch/francesco.bernini1/AI2425/datasets/cats/Data.
+[2025-07-10 01:38:54] - Starting GAN training...
+[2025-07-10 01:39:21] - Epoch 1/50 completed - Loss D: 1.1217, Loss G: 0.3791
+[2025-07-10 01:39:46] - Epoch 2/50 completed - Loss D: 0.7647, Loss G: 0.7822
+[2025-07-10 01:40:09] - Epoch 3/50 completed - Loss D: 0.6233, Loss G: 0.8661
+[2025-07-10 01:40:30] - Epoch 4/50 completed - Loss D: 0.5096, Loss G: 1.2824
+[2025-07-10 01:40:52] - Epoch 5/50 completed - Loss D: 0.5425, Loss G: 0.9496
+[2025-07-10 01:41:19] - Epoch 6/50 completed - Loss D: 0.6105, Loss G: 0.8072
+[2025-07-10 01:41:45] - Epoch 7/50 completed - Loss D: 0.6831, Loss G: 0.8877
+[2025-07-10 01:42:11] - Epoch 8/50 completed - Loss D: 0.5951, Loss G: 0.8225
+[2025-07-10 01:42:37] - Epoch 9/50 completed - Loss D: 0.8208, Loss G: 0.6299
+[2025-07-10 01:43:03] - Epoch 10/50 completed - Loss D: 0.6961, Loss G: 0.6860
+[2025-07-10 01:43:28] - Epoch 11/50 completed - Loss D: 0.7368, Loss G: 0.7042
+[2025-07-10 01:43:51] - Epoch 12/50 completed - Loss D: 0.6174, Loss G: 0.9247
+[2025-07-10 01:44:11] - Epoch 13/50 completed - Loss D: 0.6432, Loss G: 0.8419
+[2025-07-10 01:44:32] - Epoch 14/50 completed - Loss D: 0.6914, Loss G: 0.8891
+[2025-07-10 01:44:58] - Epoch 15/50 completed - Loss D: 0.7039, Loss G: 0.8910
+[2025-07-10 01:45:23] - Epoch 16/50 completed - Loss D: 0.5894, Loss G: 0.8352
+[2025-07-10 01:45:49] - Epoch 17/50 completed - Loss D: 0.6407, Loss G: 0.9211
+[2025-07-10 01:46:15] - Epoch 18/50 completed - Loss D: 0.5929, Loss G: 0.9422
+[2025-07-10 01:46:41] - Epoch 19/50 completed - Loss D: 0.5629, Loss G: 0.9503
+[2025-07-10 01:47:05] - Epoch 20/50 completed - Loss D: 0.6314, Loss G: 0.9058
+[2025-07-10 01:47:27] - Epoch 21/50 completed - Loss D: 0.7163, Loss G: 0.8295
+[2025-07-10 01:47:49] - Epoch 22/50 completed - Loss D: 0.5966, Loss G: 0.8598
+[2025-07-10 01:48:10] - Epoch 23/50 completed - Loss D: 0.6962, Loss G: 1.1086
+[2025-07-10 01:48:35] - Epoch 24/50 completed - Loss D: 0.6949, Loss G: 0.7659
+[2025-07-10 01:49:02] - Epoch 25/50 completed - Loss D: 0.7238, Loss G: 0.8131
+[2025-07-10 01:49:28] - Epoch 26/50 completed - Loss D: 0.7090, Loss G: 0.8567
+[2025-07-10 01:49:54] - Epoch 27/50 completed - Loss D: 0.6364, Loss G: 0.9516
+[2025-07-10 01:50:21] - Epoch 28/50 completed - Loss D: 0.7307, Loss G: 0.7579
+[2025-07-10 01:50:46] - Epoch 29/50 completed - Loss D: 0.6561, Loss G: 0.7423
+[2025-07-10 01:51:12] - Epoch 30/50 completed - Loss D: 0.7591, Loss G: 0.6013
+[2025-07-10 01:51:36] - Epoch 31/50 completed - Loss D: 0.7837, Loss G: 0.6600
+[2025-07-10 01:52:02] - Epoch 32/50 completed - Loss D: 0.7098, Loss G: 0.8591
+[2025-07-10 01:52:26] - Epoch 33/50 completed - Loss D: 0.6154, Loss G: 0.9143
+[2025-07-10 01:52:49] - Epoch 34/50 completed - Loss D: 0.6576, Loss G: 0.8854
+[2025-07-10 01:53:17] - Epoch 35/50 completed - Loss D: 0.6962, Loss G: 1.1128
+[2025-07-10 01:53:43] - Epoch 36/50 completed - Loss D: 0.6371, Loss G: 0.7809
+[2025-07-10 01:54:09] - Epoch 37/50 completed - Loss D: 0.6185, Loss G: 1.1555
+[2025-07-10 01:54:35] - Epoch 38/50 completed - Loss D: 0.6356, Loss G: 0.7770
+[2025-07-10 01:54:58] - Epoch 39/50 completed - Loss D: 0.5812, Loss G: 1.0401
+[2025-07-10 01:55:20] - Epoch 40/50 completed - Loss D: 0.4993, Loss G: 1.0682
+[2025-07-10 01:55:41] - Epoch 41/50 completed - Loss D: 0.5609, Loss G: 0.9646
+[2025-07-10 01:56:02] - Epoch 42/50 completed - Loss D: 0.5948, Loss G: 0.9618
+[2025-07-10 01:56:24] - Epoch 43/50 completed - Loss D: 1.5706, Loss G: 0.3666
+[2025-07-10 01:56:48] - Epoch 44/50 completed - Loss D: 0.7115, Loss G: 0.6996
+[2025-07-10 01:57:13] - Epoch 45/50 completed - Loss D: 0.6650, Loss G: 0.8647
+[2025-07-10 01:57:35] - Epoch 46/50 completed - Loss D: 1.1860, Loss G: 0.3499
+[2025-07-10 01:57:59] - Epoch 47/50 completed - Loss D: 0.7532, Loss G: 0.6330
+[2025-07-10 01:58:25] - Epoch 48/50 completed - Loss D: 0.6026, Loss G: 0.9481
+[2025-07-10 01:58:51] - Epoch 49/50 completed - Loss D: 0.5299, Loss G: 1.0277
+[2025-07-10 01:59:18] - Epoch 50/50 completed - Loss D: 0.5919, Loss G: 0.9052
+[2025-07-10 01:59:19] - GAN completed.
+Tempo impiegato per run_gan.py: 00:21:06
+
+--- Riepilogo Esecuzione Job ---
+Data e Ora Fine Esecuzione: Thu Jul 10 01:59:22 CEST 2025
+Tempo Totale Impiegato per il Job: 00:42:09
+------------------------------
