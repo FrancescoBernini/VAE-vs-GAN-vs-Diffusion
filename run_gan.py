@@ -93,7 +93,11 @@ for epoch in range(epochs):
         optimizer_G.step()
         # Train Discriminator
         optimizer_D.zero_grad()
-        real_validity = discriminator(imgs)
+        # Added noise to real images
+        noise = torch.randn_like(imgs) * 0.005 
+        imgs_noisy = imgs + noise
+        imgs_noisy = torch.clamp(imgs_noisy, -1.0, 1.0) 
+        real_validity = discriminator(imgs_noisy)        
         d_real_loss = loss_fn(real_validity, real_labels_smoothed)
         fake_validity = discriminator(gen_imgs.detach())
         d_fake_loss = loss_fn(fake_validity, fake_labels_smoothed)
@@ -108,7 +112,7 @@ for epoch in range(epochs):
         gen_sample = gen_sample[0].permute(1,2,0).numpy()
         gen_sample = (gen_sample * 255).astype("uint8")
         frames.append(gen_sample)
-        # Salva la migliore generazione
+        # Save best frame
         if g_loss.item() < best_loss_g:
             best_loss_g = g_loss.item()
             best_frame = gen_sample.copy()

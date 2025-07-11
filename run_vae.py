@@ -64,6 +64,8 @@ class SimpleVAE(nn.Module):
 # Model loading and training setup
 vae = SimpleVAE().to(device)
 optimizer = torch.optim.Adam(vae.parameters(), lr=1e-3)
+best_loss = float('inf')
+best_frame = None
 latent_dim = 128
 epochs = 50
 
@@ -89,10 +91,14 @@ for epoch in range(epochs):
         vae_sample = vae_sample.permute(1,2,0).numpy()
         vae_sample = (vae_sample * 255).astype("uint8")
         frames.append(vae_sample)
+        # Save best frame
+        if loss.item() < best_loss:
+            best_loss = loss.item()
+            best_frame = vae_sample.copy()
     vae.train()
     log("Epoch {}/{} completed - Loss: {:.4f}".format(epoch+1, epochs, loss.item()))
 
-# Save the gif and the last frame separately
-plt.imsave("vae_final.png", frames[-1])
+# Save the gif and the best frame separately
+plt.imsave("vae_best.png", best_frame)
 imageio.mimsave("vae_progress.gif", frames, fps=2)
 log("VAE completed.")
