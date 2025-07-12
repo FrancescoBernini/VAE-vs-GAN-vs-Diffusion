@@ -67,7 +67,7 @@ optimizer = torch.optim.Adam(vae.parameters(), lr=1e-3)
 best_loss = float('inf')
 best_frame = None
 latent_dim = 128
-epochs = 50
+epochs = 200
 
 # Training
 log("Starting VAE training...")

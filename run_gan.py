@@ -69,7 +69,7 @@ loss_fn = nn.BCELoss()
 best_loss_g = float('inf')
 best_frame = None
 latent_dim = 128
-epochs = 50
+epochs = 200
 
 # Training
 log("Starting GAN training...")
