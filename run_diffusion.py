@@ -1,69 +1,13 @@
 # Diffusion
+from common import log, get_device, parse_dataset_arg, set_seed, CustomImageDataset, get_dataloader
 
-import os
 import sys
 import torch
-import datetime
 import matplotlib.pyplot as plt
-from PIL import Image
-from glob import glob
-from torch.utils.data import Dataset, DataLoader
-from torchvision import transforms
 import numpy as np
-import warnings
 import imageio
 
 from torch.cuda.amp import autocast, GradScaler
-
-warnings.filterwarnings("ignore", category=FutureWarning)
-
-def log(msg):
-    print(f"[{datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')}] - {msg}")
-    sys.stdout.flush()
-
-# Device setup
-device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-log(f"Dispositivo utilizzato: {device}")
-
-# Argomenti
-if len(sys.argv) < 2:
-    print("Usage: python run_diffusion.py -cats")
-    sys.exit(1)
-
-dataset_flag = sys.argv[1]
-if dataset_flag == "-cats":
-    data_dir = "/hpc/scratch/francesco.bernini1/AI2425/datasets/cats/Data"
-else:
-    raise ValueError(f"Dataset '{dataset_flag}' non gestito. Per ora supportato solo '-cats'.")
-
-# Dataset personalizzato
-class CustomImageDataset(Dataset):
-    def __init__(self, image_dir, image_size=64):
-        self.image_paths = glob(os.path.join(image_dir, "*.png"))
-        self.transform = transforms.Compose([
-            transforms.Resize((image_size, image_size)),
-            transforms.ToTensor(),
-            transforms.Normalize((0.5,), (0.5,))
-        ])
-    def __len__(self):
-        return len(self.image_paths)
-    def __getitem__(self, idx):
-        img = Image.open(self.image_paths[idx]).convert("RGB")
-        return self.transform(img)
-
-# Parametri
-image_size = 64
-batch_size = 256
-num_epochs = 50
-
-dataloader = DataLoader(
-    CustomImageDataset(data_dir, image_size),
-    batch_size=batch_size,
-    shuffle=True,
-    pin_memory=True,
-    num_workers=os.cpu_count() // 2 if os.cpu_count() else 4
-)
-log(f"Dataset caricato con {len(dataloader.dataset)} immagini PNG. Batch size: {batch_size}")
 
 # Importa la libreria Diffusion
 try:
@@ -72,18 +16,34 @@ except ImportError:
     print("La libreria 'denoising-diffusion-pytorch' non è installata.")
     sys.exit(1)
 
-# Modello e Diffusion
+# For reproducibility
+set_seed(42) 
+
+# Try to use GPU if available
+device = get_device() 
+
+log(f"Using the device: {device}") 
+
+# Get dataset directory from command line argument
+data_dir = parse_dataset_arg() 
+
+# Load dataset
+dataset = CustomImageDataset(data_dir, "diffusion")
+dataloader = get_dataloader(data_dir, "diffusion")
+
+log(f"Dataset with {len(dataset)} images loaded from {data_dir}.")
+
+# Model loading and training setup
 model = Unet(dim=64, dim_mults=(1, 2, 4)).to(device)
-diffusion = GaussianDiffusion(model, image_size=image_size, timesteps=1000).to(device)
+diffusion = GaussianDiffusion(model, image_size=64, timesteps=1000).to(device)
 optimizer = torch.optim.Adam(diffusion.parameters(), lr=1e-4)
 scaler = GradScaler()
+num_epochs = 30
 
+# Training
+log("Starting Diffusion training...")
+frames = []
 diffusion.train()
-log("Inizio training Diffusion...")
-
-# Lista per salvare le immagini di ogni epoca
-epoch_samples = []
-
 for epoch in range(num_epochs):
     epoch_loss = 0.0
     for i, imgs in enumerate(dataloader):
@@ -113,16 +73,11 @@ for epoch in range(num_epochs):
     img = (img + 1) / 2
     img = np.clip(img, 0, 1)
     img = (img * 255).astype(np.uint8)
-    epoch_samples.append(img)
+    frames.append(img)
     diffusion.train()
 
-# Salva la GIF
-imageio.mimsave("diffusion_progress.gif", epoch_samples, fps=2)
-log("GIF di generazione salvata come 'diffusion_progress.gif'.")
-
-# Salva l'immagine finale
-Image.fromarray(epoch_samples[-1]).save("diffusion_final.png")
-log("Immagine finale salvata come 'diffusion_final.png'.")
-
-log("Diffusion completato.")
+# Save the gif and the best frame separately
+plt.imsave("diffusion_final.png", frames[-1])
+imageio.mimsave("diffusion_progress.gif", frames, fps=2)
+log("Diffusion completed.")
 

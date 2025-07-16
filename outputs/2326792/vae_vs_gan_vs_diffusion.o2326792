@@ -1,0 +1,53 @@
+--- Informazioni sul Job Slurm ---
+Nome Job: vae_vs_gan_vs_diffusion
+ID Job: 2326792
+Partizione: gpu
+QoS: gpu
+GPU Richieste: 0
+Memoria Richiesta: 16384
+CPU per Task: 24
+Data e Ora Inizio Esecuzione: Thu Jul 17 00:08:34 CEST 2025
+-----------------------------------
+L'ambiente Conda diffusion-env esiste già.
+denoising-diffusion-pytorch già installato.
+Esecuzione di run_diffusion.py...
+[2025-07-17 00:10:00] - Using the device: cuda
+[2025-07-17 00:10:01] - Dataset with 29843 images loaded from /hpc/scratch/francesco.bernini1/AI2425/datasets/cats/Data.
+[2025-07-17 00:10:03] - Starting Diffusion training...
+[2025-07-17 00:10:28] - Epoca 1/5 - Batch 100/467 - Loss: 0.2278
+[2025-07-17 00:10:40] - Epoca 1/5 - Batch 200/467 - Loss: 0.1365
+[2025-07-17 00:10:53] - Epoca 1/5 - Batch 300/467 - Loss: 0.1289
+[2025-07-17 00:11:05] - Epoca 1/5 - Batch 400/467 - Loss: 0.1121
+[2025-07-17 00:11:14] - Epoca 1/5 completata - Loss media: 0.1977
+[2025-07-17 00:11:14] - Memoria GPU allocata: 175.92 MB - Riservata: 7372.00 MB
+[2025-07-17 00:11:42] - Epoca 2/5 - Batch 100/467 - Loss: 0.1264
+[2025-07-17 00:11:54] - Epoca 2/5 - Batch 200/467 - Loss: 0.1502
+[2025-07-17 00:12:07] - Epoca 2/5 - Batch 300/467 - Loss: 0.0951
+[2025-07-17 00:12:19] - Epoca 2/5 - Batch 400/467 - Loss: 0.1061
+[2025-07-17 00:12:28] - Epoca 2/5 completata - Loss media: 0.1146
+[2025-07-17 00:12:28] - Memoria GPU allocata: 175.96 MB - Riservata: 7396.00 MB
+[2025-07-17 00:12:55] - Epoca 3/5 - Batch 100/467 - Loss: 0.1056
+[2025-07-17 00:13:08] - Epoca 3/5 - Batch 200/467 - Loss: 0.1058
+[2025-07-17 00:13:20] - Epoca 3/5 - Batch 300/467 - Loss: 0.1009
+[2025-07-17 00:13:33] - Epoca 3/5 - Batch 400/467 - Loss: 0.1315
+[2025-07-17 00:13:41] - Epoca 3/5 completata - Loss media: 0.1010
+[2025-07-17 00:13:41] - Memoria GPU allocata: 175.96 MB - Riservata: 7396.00 MB
+[2025-07-17 00:14:08] - Epoca 4/5 - Batch 100/467 - Loss: 0.0916
+[2025-07-17 00:14:21] - Epoca 4/5 - Batch 200/467 - Loss: 0.0736
+[2025-07-17 00:14:33] - Epoca 4/5 - Batch 300/467 - Loss: 0.1203
+[2025-07-17 00:14:46] - Epoca 4/5 - Batch 400/467 - Loss: 0.0920
+[2025-07-17 00:14:54] - Epoca 4/5 completata - Loss media: 0.0933
+[2025-07-17 00:14:54] - Memoria GPU allocata: 175.96 MB - Riservata: 7396.00 MB
+[2025-07-17 00:15:22] - Epoca 5/5 - Batch 100/467 - Loss: 0.0833
+[2025-07-17 00:15:34] - Epoca 5/5 - Batch 200/467 - Loss: 0.0823
+[2025-07-17 00:15:47] - Epoca 5/5 - Batch 300/467 - Loss: 0.0876
+[2025-07-17 00:15:59] - Epoca 5/5 - Batch 400/467 - Loss: 0.0895
+[2025-07-17 00:16:08] - Epoca 5/5 completata - Loss media: 0.0884
+[2025-07-17 00:16:08] - Memoria GPU allocata: 175.96 MB - Riservata: 7396.00 MB
+[2025-07-17 00:16:22] - Diffusion completed.
+Tempo impiegato per run_diffusion.py: 00:06:36
+
+--- Riepilogo Esecuzione Job ---
+Data e Ora Fine Esecuzione: Thu Jul 17 00:16:23 CEST 2025
+Tempo Totale Impiegato per il Job: 00:06:36
+------------------------------

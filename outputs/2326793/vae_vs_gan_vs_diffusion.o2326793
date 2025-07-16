@@ -1,0 +1,203 @@
+--- Informazioni sul Job Slurm ---
+Nome Job: vae_vs_gan_vs_diffusion
+ID Job: 2326793
+Partizione: gpu
+QoS: gpu
+GPU Richieste: 0
+Memoria Richiesta: 16384
+CPU per Task: 24
+Data e Ora Inizio Esecuzione: Thu Jul 17 00:18:50 CEST 2025
+-----------------------------------
+L'ambiente Conda diffusion-env esiste già.
+denoising-diffusion-pytorch già installato.
+Esecuzione di run_diffusion.py...
+[2025-07-17 00:19:59] - Using the device: cuda
+[2025-07-17 00:19:59] - Dataset with 29843 images loaded from /hpc/scratch/francesco.bernini1/AI2425/datasets/cats/Data.
+[2025-07-17 00:19:59] - Starting Diffusion training...
+[2025-07-17 00:20:23] - Epoca 1/30 - Batch 100/467 - Loss: 0.2278
+[2025-07-17 00:20:35] - Epoca 1/30 - Batch 200/467 - Loss: 0.1365
+[2025-07-17 00:20:48] - Epoca 1/30 - Batch 300/467 - Loss: 0.1289
+[2025-07-17 00:21:00] - Epoca 1/30 - Batch 400/467 - Loss: 0.1121
+[2025-07-17 00:21:09] - Epoca 1/30 completata - Loss media: 0.1977
+[2025-07-17 00:21:09] - Memoria GPU allocata: 175.92 MB - Riservata: 7372.00 MB
+[2025-07-17 00:21:37] - Epoca 2/30 - Batch 100/467 - Loss: 0.1264
+[2025-07-17 00:21:50] - Epoca 2/30 - Batch 200/467 - Loss: 0.1502
+[2025-07-17 00:22:02] - Epoca 2/30 - Batch 300/467 - Loss: 0.0951
+[2025-07-17 00:22:15] - Epoca 2/30 - Batch 400/467 - Loss: 0.1061
+[2025-07-17 00:22:23] - Epoca 2/30 completata - Loss media: 0.1146
+[2025-07-17 00:22:23] - Memoria GPU allocata: 175.96 MB - Riservata: 7396.00 MB
+[2025-07-17 00:22:51] - Epoca 3/30 - Batch 100/467 - Loss: 0.1056
+[2025-07-17 00:23:03] - Epoca 3/30 - Batch 200/467 - Loss: 0.1058
+[2025-07-17 00:23:16] - Epoca 3/30 - Batch 300/467 - Loss: 0.1009
+[2025-07-17 00:23:28] - Epoca 3/30 - Batch 400/467 - Loss: 0.1315
+[2025-07-17 00:23:37] - Epoca 3/30 completata - Loss media: 0.1010
+[2025-07-17 00:23:37] - Memoria GPU allocata: 175.96 MB - Riservata: 7396.00 MB
+[2025-07-17 00:24:04] - Epoca 4/30 - Batch 100/467 - Loss: 0.0916
+[2025-07-17 00:24:17] - Epoca 4/30 - Batch 200/467 - Loss: 0.0736
+[2025-07-17 00:24:29] - Epoca 4/30 - Batch 300/467 - Loss: 0.1203
+[2025-07-17 00:24:42] - Epoca 4/30 - Batch 400/467 - Loss: 0.0920
+[2025-07-17 00:24:50] - Epoca 4/30 completata - Loss media: 0.0933
+[2025-07-17 00:24:50] - Memoria GPU allocata: 175.96 MB - Riservata: 7396.00 MB
+[2025-07-17 00:25:18] - Epoca 5/30 - Batch 100/467 - Loss: 0.0833
+[2025-07-17 00:25:30] - Epoca 5/30 - Batch 200/467 - Loss: 0.0823
+[2025-07-17 00:25:43] - Epoca 5/30 - Batch 300/467 - Loss: 0.0876
+[2025-07-17 00:25:55] - Epoca 5/30 - Batch 400/467 - Loss: 0.0895
+[2025-07-17 00:26:04] - Epoca 5/30 completata - Loss media: 0.0884
+[2025-07-17 00:26:04] - Memoria GPU allocata: 175.96 MB - Riservata: 7396.00 MB
+[2025-07-17 00:26:31] - Epoca 6/30 - Batch 100/467 - Loss: 0.1101
+[2025-07-17 00:26:44] - Epoca 6/30 - Batch 200/467 - Loss: 0.0788
+[2025-07-17 00:26:57] - Epoca 6/30 - Batch 300/467 - Loss: 0.0647
+[2025-07-17 00:27:09] - Epoca 6/30 - Batch 400/467 - Loss: 0.0886
+[2025-07-17 00:27:18] - Epoca 6/30 completata - Loss media: 0.0838
+[2025-07-17 00:27:18] - Memoria GPU allocata: 175.96 MB - Riservata: 7396.00 MB
+[2025-07-17 00:27:45] - Epoca 7/30 - Batch 100/467 - Loss: 0.0860
+[2025-07-17 00:27:58] - Epoca 7/30 - Batch 200/467 - Loss: 0.0934
+[2025-07-17 00:28:10] - Epoca 7/30 - Batch 300/467 - Loss: 0.0805
+[2025-07-17 00:28:23] - Epoca 7/30 - Batch 400/467 - Loss: 0.0820
+[2025-07-17 00:28:31] - Epoca 7/30 completata - Loss media: 0.0813
+[2025-07-17 00:28:31] - Memoria GPU allocata: 175.96 MB - Riservata: 7396.00 MB
+[2025-07-17 00:28:59] - Epoca 8/30 - Batch 100/467 - Loss: 0.0630
+[2025-07-17 00:29:11] - Epoca 8/30 - Batch 200/467 - Loss: 0.0847
+[2025-07-17 00:29:24] - Epoca 8/30 - Batch 300/467 - Loss: 0.0918
+[2025-07-17 00:29:37] - Epoca 8/30 - Batch 400/467 - Loss: 0.0925
+[2025-07-17 00:29:45] - Epoca 8/30 completata - Loss media: 0.0791
+[2025-07-17 00:29:45] - Memoria GPU allocata: 175.96 MB - Riservata: 7396.00 MB
+[2025-07-17 00:30:12] - Epoca 9/30 - Batch 100/467 - Loss: 0.0708
+[2025-07-17 00:30:25] - Epoca 9/30 - Batch 200/467 - Loss: 0.0638
+[2025-07-17 00:30:38] - Epoca 9/30 - Batch 300/467 - Loss: 0.0824
+[2025-07-17 00:30:50] - Epoca 9/30 - Batch 400/467 - Loss: 0.0841
+[2025-07-17 00:30:59] - Epoca 9/30 completata - Loss media: 0.0778
+[2025-07-17 00:30:59] - Memoria GPU allocata: 175.96 MB - Riservata: 7396.00 MB
+[2025-07-17 00:31:26] - Epoca 10/30 - Batch 100/467 - Loss: 0.0697
+[2025-07-17 00:31:39] - Epoca 10/30 - Batch 200/467 - Loss: 0.0696
+[2025-07-17 00:31:51] - Epoca 10/30 - Batch 300/467 - Loss: 0.0775
+[2025-07-17 00:32:04] - Epoca 10/30 - Batch 400/467 - Loss: 0.0789
+[2025-07-17 00:32:12] - Epoca 10/30 completata - Loss media: 0.0775
+[2025-07-17 00:32:12] - Memoria GPU allocata: 175.96 MB - Riservata: 7396.00 MB
+[2025-07-17 00:32:40] - Epoca 11/30 - Batch 100/467 - Loss: 0.0638
+[2025-07-17 00:32:52] - Epoca 11/30 - Batch 200/467 - Loss: 0.1016
+[2025-07-17 00:33:05] - Epoca 11/30 - Batch 300/467 - Loss: 0.0755
+[2025-07-17 00:33:18] - Epoca 11/30 - Batch 400/467 - Loss: 0.0864
+[2025-07-17 00:33:26] - Epoca 11/30 completata - Loss media: 0.0769
+[2025-07-17 00:33:26] - Memoria GPU allocata: 175.96 MB - Riservata: 7396.00 MB
+[2025-07-17 00:33:54] - Epoca 12/30 - Batch 100/467 - Loss: 0.1081
+[2025-07-17 00:34:06] - Epoca 12/30 - Batch 200/467 - Loss: 0.0659
+[2025-07-17 00:34:19] - Epoca 12/30 - Batch 300/467 - Loss: 0.0730
+[2025-07-17 00:34:31] - Epoca 12/30 - Batch 400/467 - Loss: 0.0854
+[2025-07-17 00:34:40] - Epoca 12/30 completata - Loss media: 0.0763
+[2025-07-17 00:34:40] - Memoria GPU allocata: 175.96 MB - Riservata: 7396.00 MB
+[2025-07-17 00:35:07] - Epoca 13/30 - Batch 100/467 - Loss: 0.0866
+[2025-07-17 00:35:20] - Epoca 13/30 - Batch 200/467 - Loss: 0.0873
+[2025-07-17 00:35:32] - Epoca 13/30 - Batch 300/467 - Loss: 0.0713
+[2025-07-17 00:35:45] - Epoca 13/30 - Batch 400/467 - Loss: 0.0847
+[2025-07-17 00:35:53] - Epoca 13/30 completata - Loss media: 0.0753
+[2025-07-17 00:35:53] - Memoria GPU allocata: 175.96 MB - Riservata: 7396.00 MB
+[2025-07-17 00:36:21] - Epoca 14/30 - Batch 100/467 - Loss: 0.0790
+[2025-07-17 00:36:34] - Epoca 14/30 - Batch 200/467 - Loss: 0.0838
+[2025-07-17 00:36:46] - Epoca 14/30 - Batch 300/467 - Loss: 0.0751
+[2025-07-17 00:36:59] - Epoca 14/30 - Batch 400/467 - Loss: 0.0648
+[2025-07-17 00:37:07] - Epoca 14/30 completata - Loss media: 0.0753
+[2025-07-17 00:37:07] - Memoria GPU allocata: 175.96 MB - Riservata: 7396.00 MB
+[2025-07-17 00:37:35] - Epoca 15/30 - Batch 100/467 - Loss: 0.0771
+[2025-07-17 00:37:47] - Epoca 15/30 - Batch 200/467 - Loss: 0.0849
+[2025-07-17 00:38:00] - Epoca 15/30 - Batch 300/467 - Loss: 0.0574
+[2025-07-17 00:38:13] - Epoca 15/30 - Batch 400/467 - Loss: 0.0714
+[2025-07-17 00:38:21] - Epoca 15/30 completata - Loss media: 0.0737
+[2025-07-17 00:38:21] - Memoria GPU allocata: 175.96 MB - Riservata: 7396.00 MB
+[2025-07-17 00:38:49] - Epoca 16/30 - Batch 100/467 - Loss: 0.0634
+[2025-07-17 00:39:01] - Epoca 16/30 - Batch 200/467 - Loss: 0.0623
+[2025-07-17 00:39:14] - Epoca 16/30 - Batch 300/467 - Loss: 0.0740
+[2025-07-17 00:39:26] - Epoca 16/30 - Batch 400/467 - Loss: 0.0624
+[2025-07-17 00:39:35] - Epoca 16/30 completata - Loss media: 0.0740
+[2025-07-17 00:39:35] - Memoria GPU allocata: 175.96 MB - Riservata: 7396.00 MB
+[2025-07-17 00:40:02] - Epoca 17/30 - Batch 100/467 - Loss: 0.0739
+[2025-07-17 00:40:15] - Epoca 17/30 - Batch 200/467 - Loss: 0.0705
+[2025-07-17 00:40:27] - Epoca 17/30 - Batch 300/467 - Loss: 0.0711
+[2025-07-17 00:40:40] - Epoca 17/30 - Batch 400/467 - Loss: 0.0752
+[2025-07-17 00:40:48] - Epoca 17/30 completata - Loss media: 0.0733
+[2025-07-17 00:40:48] - Memoria GPU allocata: 175.96 MB - Riservata: 7396.00 MB
+[2025-07-17 00:41:16] - Epoca 18/30 - Batch 100/467 - Loss: 0.0951
+[2025-07-17 00:41:29] - Epoca 18/30 - Batch 200/467 - Loss: 0.0771
+[2025-07-17 00:41:41] - Epoca 18/30 - Batch 300/467 - Loss: 0.0858
+[2025-07-17 00:41:54] - Epoca 18/30 - Batch 400/467 - Loss: 0.0906
+[2025-07-17 00:42:02] - Epoca 18/30 completata - Loss media: 0.0728
+[2025-07-17 00:42:02] - Memoria GPU allocata: 175.96 MB - Riservata: 7396.00 MB
+[2025-07-17 00:42:30] - Epoca 19/30 - Batch 100/467 - Loss: 0.0748
+[2025-07-17 00:42:43] - Epoca 19/30 - Batch 200/467 - Loss: 0.0941
+[2025-07-17 00:42:55] - Epoca 19/30 - Batch 300/467 - Loss: 0.0779
+[2025-07-17 00:43:08] - Epoca 19/30 - Batch 400/467 - Loss: 0.0684
+[2025-07-17 00:43:16] - Epoca 19/30 completata - Loss media: 0.0730
+[2025-07-17 00:43:16] - Memoria GPU allocata: 175.96 MB - Riservata: 7396.00 MB
+[2025-07-17 00:43:44] - Epoca 20/30 - Batch 100/467 - Loss: 0.0693
+[2025-07-17 00:43:56] - Epoca 20/30 - Batch 200/467 - Loss: 0.0659
+[2025-07-17 00:44:09] - Epoca 20/30 - Batch 300/467 - Loss: 0.0636
+[2025-07-17 00:44:21] - Epoca 20/30 - Batch 400/467 - Loss: 0.0779
+[2025-07-17 00:44:30] - Epoca 20/30 completata - Loss media: 0.0736
+[2025-07-17 00:44:30] - Memoria GPU allocata: 175.96 MB - Riservata: 7396.00 MB
+[2025-07-17 00:44:58] - Epoca 21/30 - Batch 100/467 - Loss: 0.0654
+[2025-07-17 00:45:10] - Epoca 21/30 - Batch 200/467 - Loss: 0.0764
+[2025-07-17 00:45:23] - Epoca 21/30 - Batch 300/467 - Loss: 0.0968
+[2025-07-17 00:45:35] - Epoca 21/30 - Batch 400/467 - Loss: 0.0637
+[2025-07-17 00:45:44] - Epoca 21/30 completata - Loss media: 0.0728
+[2025-07-17 00:45:44] - Memoria GPU allocata: 175.96 MB - Riservata: 7396.00 MB
+[2025-07-17 00:46:12] - Epoca 22/30 - Batch 100/467 - Loss: 0.0772
+[2025-07-17 00:46:24] - Epoca 22/30 - Batch 200/467 - Loss: 0.0778
+[2025-07-17 00:46:37] - Epoca 22/30 - Batch 300/467 - Loss: 0.0654
+[2025-07-17 00:46:49] - Epoca 22/30 - Batch 400/467 - Loss: 0.0736
+[2025-07-17 00:46:58] - Epoca 22/30 completata - Loss media: 0.0713
+[2025-07-17 00:46:58] - Memoria GPU allocata: 175.96 MB - Riservata: 7396.00 MB
+[2025-07-17 00:47:25] - Epoca 23/30 - Batch 100/467 - Loss: 0.0727
+[2025-07-17 00:47:38] - Epoca 23/30 - Batch 200/467 - Loss: 0.0608
+[2025-07-17 00:47:50] - Epoca 23/30 - Batch 300/467 - Loss: 0.0638
+[2025-07-17 00:48:03] - Epoca 23/30 - Batch 400/467 - Loss: 0.0811
+[2025-07-17 00:48:11] - Epoca 23/30 completata - Loss media: 0.0722
+[2025-07-17 00:48:11] - Memoria GPU allocata: 175.96 MB - Riservata: 7396.00 MB
+[2025-07-17 00:48:39] - Epoca 24/30 - Batch 100/467 - Loss: 0.0732
+[2025-07-17 00:48:52] - Epoca 24/30 - Batch 200/467 - Loss: 0.0660
+[2025-07-17 00:49:04] - Epoca 24/30 - Batch 300/467 - Loss: 0.0637
+[2025-07-17 00:49:17] - Epoca 24/30 - Batch 400/467 - Loss: 0.0879
+[2025-07-17 00:49:25] - Epoca 24/30 completata - Loss media: 0.0712
+[2025-07-17 00:49:25] - Memoria GPU allocata: 175.96 MB - Riservata: 7396.00 MB
+[2025-07-17 00:49:53] - Epoca 25/30 - Batch 100/467 - Loss: 0.0653
+[2025-07-17 00:50:06] - Epoca 25/30 - Batch 200/467 - Loss: 0.0713
+[2025-07-17 00:50:18] - Epoca 25/30 - Batch 300/467 - Loss: 0.0715
+[2025-07-17 00:50:31] - Epoca 25/30 - Batch 400/467 - Loss: 0.0719
+[2025-07-17 00:50:39] - Epoca 25/30 completata - Loss media: 0.0715
+[2025-07-17 00:50:39] - Memoria GPU allocata: 175.96 MB - Riservata: 7396.00 MB
+[2025-07-17 00:51:07] - Epoca 26/30 - Batch 100/467 - Loss: 0.0558
+[2025-07-17 00:51:20] - Epoca 26/30 - Batch 200/467 - Loss: 0.0822
+[2025-07-17 00:51:32] - Epoca 26/30 - Batch 300/467 - Loss: 0.0558
+[2025-07-17 00:51:45] - Epoca 26/30 - Batch 400/467 - Loss: 0.0734
+[2025-07-17 00:51:53] - Epoca 26/30 completata - Loss media: 0.0711
+[2025-07-17 00:51:53] - Memoria GPU allocata: 175.96 MB - Riservata: 7396.00 MB
+[2025-07-17 00:52:21] - Epoca 27/30 - Batch 100/467 - Loss: 0.0730
+[2025-07-17 00:52:33] - Epoca 27/30 - Batch 200/467 - Loss: 0.0694
+[2025-07-17 00:52:46] - Epoca 27/30 - Batch 300/467 - Loss: 0.0728
+[2025-07-17 00:52:58] - Epoca 27/30 - Batch 400/467 - Loss: 0.0933
+[2025-07-17 00:53:07] - Epoca 27/30 completata - Loss media: 0.0711
+[2025-07-17 00:53:07] - Memoria GPU allocata: 175.96 MB - Riservata: 7396.00 MB
+[2025-07-17 00:53:34] - Epoca 28/30 - Batch 100/467 - Loss: 0.0655
+[2025-07-17 00:53:47] - Epoca 28/30 - Batch 200/467 - Loss: 0.0750
+[2025-07-17 00:53:59] - Epoca 28/30 - Batch 300/467 - Loss: 0.0705
+[2025-07-17 00:54:12] - Epoca 28/30 - Batch 400/467 - Loss: 0.0765
+[2025-07-17 00:54:20] - Epoca 28/30 completata - Loss media: 0.0717
+[2025-07-17 00:54:20] - Memoria GPU allocata: 175.96 MB - Riservata: 7396.00 MB
+[2025-07-17 00:54:48] - Epoca 29/30 - Batch 100/467 - Loss: 0.0659
+[2025-07-17 00:55:00] - Epoca 29/30 - Batch 200/467 - Loss: 0.0795
+[2025-07-17 00:55:13] - Epoca 29/30 - Batch 300/467 - Loss: 0.0606
+[2025-07-17 00:55:25] - Epoca 29/30 - Batch 400/467 - Loss: 0.0834
+[2025-07-17 00:55:34] - Epoca 29/30 completata - Loss media: 0.0706
+[2025-07-17 00:55:34] - Memoria GPU allocata: 175.96 MB - Riservata: 7396.00 MB
+[2025-07-17 00:56:01] - Epoca 30/30 - Batch 100/467 - Loss: 0.0785
+[2025-07-17 00:56:14] - Epoca 30/30 - Batch 200/467 - Loss: 0.0711
+[2025-07-17 00:56:26] - Epoca 30/30 - Batch 300/467 - Loss: 0.0771
+[2025-07-17 00:56:39] - Epoca 30/30 - Batch 400/467 - Loss: 0.0624
+[2025-07-17 00:56:47] - Epoca 30/30 completata - Loss media: 0.0708
+[2025-07-17 00:56:47] - Memoria GPU allocata: 175.96 MB - Riservata: 7396.00 MB
+[2025-07-17 00:57:02] - Diffusion completed.
+Tempo impiegato per run_diffusion.py: 00:37:16
+
+--- Riepilogo Esecuzione Job ---
+Data e Ora Fine Esecuzione: Thu Jul 17 00:57:03 CEST 2025
+Tempo Totale Impiegato per il Job: 00:37:16
+------------------------------

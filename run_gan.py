@@ -119,7 +119,7 @@ for epoch in range(epochs):
     generator.train()
     log("Epoch {}/{} completed - Loss D: {:.4f}, Loss G: {:.4f}".format(epoch+1, epochs, d_loss.item(), g_loss.item()))
 
-# Save the gif and the best frame separately (not always the last one due to loss oscillation)
+# Save the gif and the best frame separately
 plt.imsave("gan_best.png", best_frame)
 imageio.mimsave("gan_progress.gif", frames, fps=2)
 log("GAN completed.")

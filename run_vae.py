@@ -102,3 +102,4 @@ for epoch in range(epochs):
 plt.imsave("vae_best.png", best_frame)
 imageio.mimsave("vae_progress.gif", frames, fps=2)
 log("VAE completed.")
+
