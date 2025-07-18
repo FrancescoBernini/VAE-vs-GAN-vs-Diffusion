@@ -75,6 +75,7 @@ frames = []
 z_fixed = torch.randn(1, latent_dim).to(device) # Created once and used throughout training
 vae.train()
 for epoch in range(epochs):
+    epoch_loss = 0.0
     for imgs in dataloader:
         imgs = imgs.to(device)
         recons, mu, logvar = vae(imgs)
@@ -84,6 +85,10 @@ for epoch in range(epochs):
         optimizer.zero_grad()
         loss.backward()
         optimizer.step()
+        epoch_loss += loss.item()
+    # Epoch average loss
+    avg_loss = epoch_loss / len(dataloader)
+
     # Save the frame
     vae.eval()
     with torch.no_grad():
@@ -92,11 +97,11 @@ for epoch in range(epochs):
         vae_sample = (vae_sample * 255).astype("uint8")
         frames.append(vae_sample)
         # Save best frame
-        if loss.item() < best_loss:
-            best_loss = loss.item()
+        if avg_loss < best_loss:
+            best_loss = avg_loss
             best_frame = vae_sample.copy()
     vae.train()
-    log("Epoch {}/{} completed - Loss: {:.4f}".format(epoch+1, epochs, loss.item()))
+    log("Epoch {}/{} completed - Average Loss: {:.4f}".format(epoch+1, epochs, avg_loss))
 
 # Save the gif and the best frame separately
 plt.imsave("vae_best.png", best_frame)

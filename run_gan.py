@@ -78,6 +78,8 @@ z_fixed = torch.randn(1, latent_dim, 1, 1, device=device)
 generator.train()
 discriminator.train()
 for epoch in range(epochs):
+    epoch_loss_g = 0.0
+    epoch_loss_d = 0.0
     for imgs in dataloader:
         imgs = imgs.to(device)
         batch_size = imgs.size(0)
@@ -90,20 +92,25 @@ for epoch in range(epochs):
         validity = discriminator(gen_imgs)
         g_loss = loss_fn(validity, real_labels_smoothed)
         g_loss.backward()
-        optimizer_G.step()
+        optimizer_G.step()        
         # Train Discriminator
-        optimizer_D.zero_grad()
-        # Added noise to real images
+        optimizer_D.zero_grad()        
         noise = torch.randn_like(imgs) * 0.005 
-        imgs_noisy = imgs + noise
+        imgs_noisy = imgs + noise # Adding noise to real images
         imgs_noisy = torch.clamp(imgs_noisy, -1.0, 1.0) 
-        real_validity = discriminator(imgs_noisy)        
+        real_validity = discriminator(imgs_noisy)      
         d_real_loss = loss_fn(real_validity, real_labels_smoothed)
         fake_validity = discriminator(gen_imgs.detach())
         d_fake_loss = loss_fn(fake_validity, fake_labels_smoothed)
         d_loss = (d_real_loss + d_fake_loss) / 2
         d_loss.backward()
         optimizer_D.step()
+        epoch_loss_g += g_loss.item()
+        epoch_loss_d += d_loss.item()
+    # Epoch average losses
+    avg_loss_g = epoch_loss_g / len(dataloader)
+    avg_loss_d = epoch_loss_d / len(dataloader)
+
     # Save the frame
     generator.eval()
     with torch.no_grad():
@@ -113,11 +120,11 @@ for epoch in range(epochs):
         gen_sample = (gen_sample * 255).astype("uint8")
         frames.append(gen_sample)
         # Save best frame
-        if g_loss.item() < best_loss_g:
-            best_loss_g = g_loss.item()
+        if avg_loss_g < best_loss_g:
+            best_loss_g = avg_loss_g
             best_frame = gen_sample.copy()
     generator.train()
-    log("Epoch {}/{} completed - Loss D: {:.4f}, Loss G: {:.4f}".format(epoch+1, epochs, d_loss.item(), g_loss.item()))
+    log("Epoch {}/{} completed - Avg Loss D: {:.4f}, Avg Loss G: {:.4f}".format(epoch+1, epochs, avg_loss_d, avg_loss_g))
 
 # Save the gif and the best frame separately
 plt.imsave("gan_best.png", best_frame)

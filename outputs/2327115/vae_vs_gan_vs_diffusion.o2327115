@@ -1,0 +1,144 @@
+--- Informazioni sul Job Slurm ---
+Nome Job: vae_vs_gan_vs_diffusion
+ID Job: 2327115
+Partizione: gpu_guest
+QoS: gpu_guest
+Memoria Richiesta: 16384
+CPU per Task: 32
+Data e Ora Inizio Esecuzione: Fri Jul 18 15:59:32 CEST 2025
+-----------------------------------
+--- Stato GPU Rilevato dal Job ---
+Fri Jul 18 15:59:32 2025       
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 550.144.03             Driver Version: 550.144.03     CUDA Version: 12.4     |
+|-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  NVIDIA L40S                    On  |   00000000:4A:00.0 Off |                    0 |
+| N/A   22C    P8             31W /  350W |       1MiB /  46068MiB |      0%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+                                                                                         
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI        PID   Type   Process name                              GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|  No running processes found                                                             |
++-----------------------------------------------------------------------------------------+
+---------------------------------
+L'ambiente Conda diffusion-env esiste già.
+denoising-diffusion-pytorch già installato.
+Esecuzione di run_diffusion.py...
+[2025-07-18 16:01:15] - Using the device: cuda
+[2025-07-18 16:01:15] - Dataset with 29843 images loaded from /hpc/scratch/francesco.bernini1/AI2425/datasets/cats/Data.
+[2025-07-18 16:01:17] - Starting Diffusion training...
+[2025-07-18 16:02:52] - Memoria GPU allocata: 180.11 MB - Riservata: 28816.00 MB
+[2025-07-18 16:03:01] - Epoch 1/50 completed - Average Loss: 0.2812
+[2025-07-18 16:04:25] - Memoria GPU allocata: 180.16 MB - Riservata: 28840.00 MB
+[2025-07-18 16:04:32] - Epoch 2/50 completed - Average Loss: 0.1224
+[2025-07-18 16:05:58] - Memoria GPU allocata: 180.16 MB - Riservata: 28842.00 MB
+[2025-07-18 16:06:05] - Epoch 3/50 completed - Average Loss: 0.1116
+[2025-07-18 16:07:30] - Memoria GPU allocata: 180.16 MB - Riservata: 28842.00 MB
+[2025-07-18 16:07:37] - Epoch 4/50 completed - Average Loss: 0.1027
+[2025-07-18 16:09:02] - Memoria GPU allocata: 180.16 MB - Riservata: 28842.00 MB
+[2025-07-18 16:09:09] - Epoch 5/50 completed - Average Loss: 0.0974
+[2025-07-18 16:10:34] - Memoria GPU allocata: 180.16 MB - Riservata: 28842.00 MB
+[2025-07-18 16:10:41] - Epoch 6/50 completed - Average Loss: 0.0934
+[2025-07-18 16:12:07] - Memoria GPU allocata: 180.16 MB - Riservata: 28842.00 MB
+[2025-07-18 16:12:14] - Epoch 7/50 completed - Average Loss: 0.0904
+[2025-07-18 16:13:39] - Memoria GPU allocata: 180.16 MB - Riservata: 28842.00 MB
+[2025-07-18 16:13:46] - Epoch 8/50 completed - Average Loss: 0.0875
+[2025-07-18 16:15:12] - Memoria GPU allocata: 180.16 MB - Riservata: 28842.00 MB
+[2025-07-18 16:15:19] - Epoch 9/50 completed - Average Loss: 0.0838
+[2025-07-18 16:16:46] - Memoria GPU allocata: 180.16 MB - Riservata: 28842.00 MB
+[2025-07-18 16:16:53] - Epoch 10/50 completed - Average Loss: 0.0814
+[2025-07-18 16:18:20] - Memoria GPU allocata: 180.16 MB - Riservata: 28842.00 MB
+[2025-07-18 16:18:26] - Epoch 11/50 completed - Average Loss: 0.0794
+[2025-07-18 16:19:51] - Memoria GPU allocata: 180.16 MB - Riservata: 28842.00 MB
+[2025-07-18 16:19:58] - Epoch 12/50 completed - Average Loss: 0.0777
+[2025-07-18 16:21:24] - Memoria GPU allocata: 180.16 MB - Riservata: 28842.00 MB
+[2025-07-18 16:21:31] - Epoch 13/50 completed - Average Loss: 0.0765
+[2025-07-18 16:22:58] - Memoria GPU allocata: 180.16 MB - Riservata: 28842.00 MB
+[2025-07-18 16:23:05] - Epoch 14/50 completed - Average Loss: 0.0758
+[2025-07-18 16:24:31] - Memoria GPU allocata: 180.16 MB - Riservata: 28842.00 MB
+[2025-07-18 16:24:38] - Epoch 15/50 completed - Average Loss: 0.0748
+[2025-07-18 16:26:04] - Memoria GPU allocata: 180.16 MB - Riservata: 28842.00 MB
+[2025-07-18 16:26:10] - Epoch 16/50 completed - Average Loss: 0.0742
+[2025-07-18 16:27:36] - Memoria GPU allocata: 180.16 MB - Riservata: 28842.00 MB
+[2025-07-18 16:27:43] - Epoch 17/50 completed - Average Loss: 0.0735
+[2025-07-18 16:29:11] - Memoria GPU allocata: 180.16 MB - Riservata: 28842.00 MB
+[2025-07-18 16:29:18] - Epoch 18/50 completed - Average Loss: 0.0727
+[2025-07-18 16:30:44] - Memoria GPU allocata: 180.16 MB - Riservata: 28842.00 MB
+[2025-07-18 16:30:51] - Epoch 19/50 completed - Average Loss: 0.0722
+[2025-07-18 16:32:16] - Memoria GPU allocata: 180.16 MB - Riservata: 28842.00 MB
+[2025-07-18 16:32:23] - Epoch 20/50 completed - Average Loss: 0.0717
+[2025-07-18 16:33:48] - Memoria GPU allocata: 180.16 MB - Riservata: 28842.00 MB
+[2025-07-18 16:33:55] - Epoch 21/50 completed - Average Loss: 0.0710
+[2025-07-18 16:35:21] - Memoria GPU allocata: 180.16 MB - Riservata: 28842.00 MB
+[2025-07-18 16:35:28] - Epoch 22/50 completed - Average Loss: 0.0703
+[2025-07-18 16:36:53] - Memoria GPU allocata: 180.16 MB - Riservata: 28842.00 MB
+[2025-07-18 16:37:00] - Epoch 23/50 completed - Average Loss: 0.0699
+[2025-07-18 16:38:25] - Memoria GPU allocata: 180.16 MB - Riservata: 28842.00 MB
+[2025-07-18 16:38:32] - Epoch 24/50 completed - Average Loss: 0.0696
+[2025-07-18 16:39:57] - Memoria GPU allocata: 180.16 MB - Riservata: 28842.00 MB
+[2025-07-18 16:40:04] - Epoch 25/50 completed - Average Loss: 0.0693
+[2025-07-18 16:41:30] - Memoria GPU allocata: 180.16 MB - Riservata: 28842.00 MB
+[2025-07-18 16:41:37] - Epoch 26/50 completed - Average Loss: 0.0686
+[2025-07-18 16:43:02] - Memoria GPU allocata: 180.16 MB - Riservata: 28842.00 MB
+[2025-07-18 16:43:09] - Epoch 27/50 completed - Average Loss: 0.0679
+[2025-07-18 16:44:36] - Memoria GPU allocata: 180.16 MB - Riservata: 28842.00 MB
+[2025-07-18 16:44:43] - Epoch 28/50 completed - Average Loss: 0.0675
+[2025-07-18 16:46:08] - Memoria GPU allocata: 180.16 MB - Riservata: 28842.00 MB
+[2025-07-18 16:46:15] - Epoch 29/50 completed - Average Loss: 0.0674
+[2025-07-18 16:47:40] - Memoria GPU allocata: 180.16 MB - Riservata: 28842.00 MB
+[2025-07-18 16:47:47] - Epoch 30/50 completed - Average Loss: 0.0668
+[2025-07-18 16:49:13] - Memoria GPU allocata: 180.16 MB - Riservata: 28842.00 MB
+[2025-07-18 16:49:20] - Epoch 31/50 completed - Average Loss: 0.0663
+[2025-07-18 16:50:45] - Memoria GPU allocata: 180.16 MB - Riservata: 28842.00 MB
+[2025-07-18 16:50:52] - Epoch 32/50 completed - Average Loss: 0.0659
+[2025-07-18 16:52:17] - Memoria GPU allocata: 180.16 MB - Riservata: 28842.00 MB
+[2025-07-18 16:52:24] - Epoch 33/50 completed - Average Loss: 0.0656
+[2025-07-18 16:53:49] - Memoria GPU allocata: 180.16 MB - Riservata: 28842.00 MB
+[2025-07-18 16:53:56] - Epoch 34/50 completed - Average Loss: 0.0652
+[2025-07-18 16:55:22] - Memoria GPU allocata: 180.16 MB - Riservata: 28842.00 MB
+[2025-07-18 16:55:29] - Epoch 35/50 completed - Average Loss: 0.0649
+[2025-07-18 16:56:54] - Memoria GPU allocata: 180.16 MB - Riservata: 28842.00 MB
+[2025-07-18 16:57:01] - Epoch 36/50 completed - Average Loss: 0.0648
+[2025-07-18 16:58:26] - Memoria GPU allocata: 180.16 MB - Riservata: 28842.00 MB
+[2025-07-18 16:58:33] - Epoch 37/50 completed - Average Loss: 0.0644
+[2025-07-18 16:59:58] - Memoria GPU allocata: 180.16 MB - Riservata: 28842.00 MB
+[2025-07-18 17:00:05] - Epoch 38/50 completed - Average Loss: 0.0642
+[2025-07-18 17:01:30] - Memoria GPU allocata: 180.16 MB - Riservata: 28842.00 MB
+[2025-07-18 17:01:37] - Epoch 39/50 completed - Average Loss: 0.0637
+[2025-07-18 17:03:02] - Memoria GPU allocata: 180.16 MB - Riservata: 28842.00 MB
+[2025-07-18 17:03:09] - Epoch 40/50 completed - Average Loss: 0.0638
+[2025-07-18 17:04:34] - Memoria GPU allocata: 180.16 MB - Riservata: 28842.00 MB
+[2025-07-18 17:04:41] - Epoch 41/50 completed - Average Loss: 0.0635
+[2025-07-18 17:06:06] - Memoria GPU allocata: 180.16 MB - Riservata: 28842.00 MB
+[2025-07-18 17:06:13] - Epoch 42/50 completed - Average Loss: 0.0629
+[2025-07-18 17:07:38] - Memoria GPU allocata: 180.16 MB - Riservata: 28842.00 MB
+[2025-07-18 17:07:45] - Epoch 43/50 completed - Average Loss: 0.0626
+[2025-07-18 17:09:11] - Memoria GPU allocata: 180.16 MB - Riservata: 28842.00 MB
+[2025-07-18 17:09:17] - Epoch 44/50 completed - Average Loss: 0.0627
+[2025-07-18 17:10:43] - Memoria GPU allocata: 180.16 MB - Riservata: 28842.00 MB
+[2025-07-18 17:10:50] - Epoch 45/50 completed - Average Loss: 0.0625
+[2025-07-18 17:12:16] - Memoria GPU allocata: 180.16 MB - Riservata: 28842.00 MB
+[2025-07-18 17:12:23] - Epoch 46/50 completed - Average Loss: 0.0620
+[2025-07-18 17:13:53] - Memoria GPU allocata: 180.16 MB - Riservata: 28842.00 MB
+[2025-07-18 17:14:00] - Epoch 47/50 completed - Average Loss: 0.0617
+[2025-07-18 17:15:26] - Memoria GPU allocata: 180.16 MB - Riservata: 28842.00 MB
+[2025-07-18 17:15:33] - Epoch 48/50 completed - Average Loss: 0.0618
+[2025-07-18 17:17:00] - Memoria GPU allocata: 180.16 MB - Riservata: 28842.00 MB
+[2025-07-18 17:17:07] - Epoch 49/50 completed - Average Loss: 0.0617
+[2025-07-18 17:18:35] - Memoria GPU allocata: 180.16 MB - Riservata: 28842.00 MB
+[2025-07-18 17:18:42] - Epoch 50/50 completed - Average Loss: 0.0612
+[2025-07-18 17:18:43] - Diffusion completed.
+Tempo impiegato per run_diffusion.py: 01:17:59
+
+--- Riepilogo Esecuzione Job ---
+Data e Ora Fine Esecuzione: Fri Jul 18 17:18:44 CEST 2025
+Tempo Totale Impiegato per il Job: 01:17:59
+------------------------------

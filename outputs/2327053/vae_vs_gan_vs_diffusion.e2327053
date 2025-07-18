@@ -1,0 +1,38 @@
+Traceback (most recent call last):
+  File "/hpc/home/francesco.bernini1/AI2425/VAE_vs_GAN_vs_Diffusion/outputs/2327053/../../run_diffusion.py", line 65, in <module>
+    loss = diffusion_model(imgs)
+  File "/hpc/home/francesco.bernini1/.conda/envs/diffusion-env/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1736, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/hpc/home/francesco.bernini1/.conda/envs/diffusion-env/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1747, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/hpc/home/francesco.bernini1/AI2425/VAE_vs_GAN_vs_Diffusion/outputs/2327053/../../run_diffusion.py", line 42, in forward
+    return self.diffusion(imgs)
+  File "/hpc/home/francesco.bernini1/.conda/envs/diffusion-env/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1736, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/hpc/home/francesco.bernini1/.conda/envs/diffusion-env/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1747, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/hpc/home/francesco.bernini1/.conda/envs/diffusion-env/lib/python3.9/site-packages/denoising_diffusion_pytorch/denoising_diffusion_pytorch.py", line 841, in forward
+    return self.p_losses(img, t, *args, **kwargs)
+  File "/hpc/home/francesco.bernini1/.conda/envs/diffusion-env/lib/python3.9/site-packages/denoising_diffusion_pytorch/denoising_diffusion_pytorch.py", line 817, in p_losses
+    model_out = self.model(x, t, x_self_cond)
+  File "/hpc/home/francesco.bernini1/.conda/envs/diffusion-env/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1736, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/hpc/home/francesco.bernini1/.conda/envs/diffusion-env/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1747, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/hpc/home/francesco.bernini1/.conda/envs/diffusion-env/lib/python3.9/site-packages/denoising_diffusion_pytorch/denoising_diffusion_pytorch.py", line 411, in forward
+    x = attn(x) + x
+  File "/hpc/home/francesco.bernini1/.conda/envs/diffusion-env/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1736, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/hpc/home/francesco.bernini1/.conda/envs/diffusion-env/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1747, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/hpc/home/francesco.bernini1/.conda/envs/diffusion-env/lib/python3.9/site-packages/denoising_diffusion_pytorch/denoising_diffusion_pytorch.py", line 221, in forward
+    qkv = self.to_qkv(x).chunk(3, dim = 1)
+  File "/hpc/home/francesco.bernini1/.conda/envs/diffusion-env/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1736, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/hpc/home/francesco.bernini1/.conda/envs/diffusion-env/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1747, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/hpc/home/francesco.bernini1/.conda/envs/diffusion-env/lib/python3.9/site-packages/torch/nn/modules/conv.py", line 554, in forward
+    return self._conv_forward(input, self.weight, self.bias)
+  File "/hpc/home/francesco.bernini1/.conda/envs/diffusion-env/lib/python3.9/site-packages/torch/nn/modules/conv.py", line 549, in _conv_forward
+    return F.conv2d(
+torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 6.00 GiB. GPU 0 has a total capacity of 44.52 GiB of which 3.38 GiB is free. Including non-PyTorch memory, this process has 41.13 GiB memory in use. Of the allocated memory 38.79 GiB is allocated by PyTorch, and 1.85 GiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)

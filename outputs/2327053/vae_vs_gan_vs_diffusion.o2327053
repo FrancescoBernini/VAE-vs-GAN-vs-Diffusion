@@ -1,0 +1,43 @@
+--- Informazioni sul Job Slurm ---
+Nome Job: vae_vs_gan_vs_diffusion
+ID Job: 2327053
+Partizione: gpu_guest
+QoS: gpu_guest
+Memoria Richiesta: 16384
+CPU per Task: 32
+Data e Ora Inizio Esecuzione: Fri Jul 18 13:43:43 CEST 2025
+-----------------------------------
+--- Stato GPU Rilevato dal Job ---
+Fri Jul 18 13:43:43 2025       
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 550.144.03             Driver Version: 550.144.03     CUDA Version: 12.4     |
+|-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  NVIDIA L40S                    On  |   00000000:4A:00.0 Off |                    0 |
+| N/A   22C    P8             31W /  350W |       1MiB /  46068MiB |      0%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+                                                                                         
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI        PID   Type   Process name                              GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|  No running processes found                                                             |
++-----------------------------------------------------------------------------------------+
+---------------------------------
+L'ambiente Conda diffusion-env esiste già.
+denoising-diffusion-pytorch già installato.
+Esecuzione di run_diffusion.py...
+[2025-07-18 13:45:46] - Using the device: cuda
+[2025-07-18 13:45:47] - Dataset with 29843 images loaded from /hpc/scratch/francesco.bernini1/AI2425/datasets/cats/Data.
+[2025-07-18 13:45:49] - Starting Diffusion training...
+Tempo impiegato per run_diffusion.py: 00:01:23
+
+--- Riepilogo Esecuzione Job ---
+Data e Ora Fine Esecuzione: Fri Jul 18 13:46:34 CEST 2025
+Tempo Totale Impiegato per il Job: 00:01:23
+------------------------------

@@ -3,14 +3,18 @@
 #SBATCH --job-name=vae_vs_gan_vs_diffusion
 #SBATCH --output="outputs/%j/%x.o%j"
 #SBATCH --error="outputs/%j/%x.e%j"
-#SBATCH --partition=gpu
-#SBATCH --qos=gpu
-##SBATCH --gres=gpu:p100:1
-#SBATCH --gres=gpu:a100_40g:1
+##SBATCH --partition=gpu
+##SBATCH --qos=gpu
+#SBATCH --partition=gpu_guest
+#SBATCH --qos=gpu_guest
+##SBATCH --gres=gpu:p100:1 
+##SBATCH --gres=gpu:v100_hylab:1
+##SBATCH --gres=gpu:a100_40g:1
 ##SBATCH --gres=gpu:a100_80g:1
+#SBATCH --gres=gpu:l40s_fisstat:1
 #SBATCH --mem=16G
-#SBATCH --cpus-per-task=24
-#SBATCH --time=0-02:00:00
+#SBATCH --cpus-per-task=32
+#SBATCH --time=0-08:00:00
 
 # --- Preparazione della directory di output ---
 
@@ -35,11 +39,14 @@ echo "Nome Job: $SLURM_JOB_NAME"
 echo "ID Job: $SLURM_JOB_ID"
 echo "Partizione: $SLURM_JOB_PARTITION"
 echo "QoS: $SLURM_JOB_QOS"
-echo "GPU Richieste: $SLURM_JOB_GPUS"
 echo "Memoria Richiesta: $SLURM_MEM_PER_NODE"
 echo "CPU per Task: $SLURM_CPUS_PER_TASK"
 echo "Data e Ora Inizio Esecuzione: $(date)"
 echo "-----------------------------------"
+
+echo "--- Stato GPU Rilevato dal Job ---"
+nvidia-smi
+echo "---------------------------------"
 
 # --- Parsing degli argomenti ---
 RUN_VAE=false

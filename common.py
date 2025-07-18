@@ -55,8 +55,8 @@ class CustomImageDataset(Dataset):
         elif model_type == "diffusion":
             self.transform = transforms.Compose([
                 transforms.ToTensor(),
-                transforms.Normalize((0.5,), (0.5,))
-            ])
+                transforms.Normalize((0.5, 0.5, 0.5), (0.5, 0.5, 0.5))
+            ]) # Every channel will be normalized to [0, 1] and then to [-1, 1] for denoising algorithm compatibility
 
     def __len__(self):
         return len(self.image_paths)
@@ -86,7 +86,7 @@ def get_dataloader(data_dir, model_type):
     elif model_type == "diffusion":
         return DataLoader(
             dataset,
-            batch_size=64,
+            batch_size=256,
             shuffle=True,
             pin_memory=True,
             num_workers=os.cpu_count() // 2 if os.cpu_count() else 4

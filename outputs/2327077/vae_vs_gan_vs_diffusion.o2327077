@@ -1,0 +1,74 @@
+--- Informazioni sul Job Slurm ---
+Nome Job: vae_vs_gan_vs_diffusion
+ID Job: 2327077
+Partizione: gpu_guest
+QoS: gpu_guest
+Memoria Richiesta: 16384
+CPU per Task: 32
+Data e Ora Inizio Esecuzione: Fri Jul 18 15:22:53 CEST 2025
+-----------------------------------
+--- Stato GPU Rilevato dal Job ---
+Fri Jul 18 15:22:53 2025       
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 550.144.03             Driver Version: 550.144.03     CUDA Version: 12.4     |
+|-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  NVIDIA L40S                    On  |   00000000:4A:00.0 Off |                    0 |
+| N/A   22C    P8             31W /  350W |       1MiB /  46068MiB |      0%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+                                                                                         
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI        PID   Type   Process name                              GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|  No running processes found                                                             |
++-----------------------------------------------------------------------------------------+
+---------------------------------
+L'ambiente Conda diffusion-env esiste già.
+denoising-diffusion-pytorch già installato.
+Esecuzione di run_diffusion.py...
+[2025-07-18 15:24:40] - Using the device: cuda
+[2025-07-18 15:24:40] - Dataset with 29843 images loaded from /hpc/scratch/francesco.bernini1/AI2425/datasets/cats/Data.
+[2025-07-18 15:24:42] - Starting Diffusion training...
+[2025-07-18 15:26:22] - Memoria GPU allocata: 180.11 MB - Riservata: 28816.00 MB
+[2025-07-18 15:26:33] - Epoch 1/15 completed - Average Loss: 0.2812
+[2025-07-18 15:28:00] - Memoria GPU allocata: 180.16 MB - Riservata: 28840.00 MB
+[2025-07-18 15:28:06] - Epoch 2/15 completed - Average Loss: 0.1224
+[2025-07-18 15:29:32] - Memoria GPU allocata: 180.16 MB - Riservata: 28842.00 MB
+[2025-07-18 15:29:39] - Epoch 3/15 completed - Average Loss: 0.1116
+[2025-07-18 15:31:04] - Memoria GPU allocata: 180.16 MB - Riservata: 28842.00 MB
+[2025-07-18 15:31:10] - Epoch 4/15 completed - Average Loss: 0.1027
+[2025-07-18 15:32:36] - Memoria GPU allocata: 180.16 MB - Riservata: 28842.00 MB
+[2025-07-18 15:32:42] - Epoch 5/15 completed - Average Loss: 0.0974
+[2025-07-18 15:34:08] - Memoria GPU allocata: 180.16 MB - Riservata: 28842.00 MB
+[2025-07-18 15:34:15] - Epoch 6/15 completed - Average Loss: 0.0934
+[2025-07-18 15:35:41] - Memoria GPU allocata: 180.16 MB - Riservata: 28842.00 MB
+[2025-07-18 15:35:47] - Epoch 7/15 completed - Average Loss: 0.0904
+[2025-07-18 15:37:13] - Memoria GPU allocata: 180.16 MB - Riservata: 28842.00 MB
+[2025-07-18 15:37:20] - Epoch 8/15 completed - Average Loss: 0.0875
+[2025-07-18 15:38:46] - Memoria GPU allocata: 180.16 MB - Riservata: 28842.00 MB
+[2025-07-18 15:38:52] - Epoch 9/15 completed - Average Loss: 0.0838
+[2025-07-18 15:40:18] - Memoria GPU allocata: 180.16 MB - Riservata: 28842.00 MB
+[2025-07-18 15:40:25] - Epoch 10/15 completed - Average Loss: 0.0814
+[2025-07-18 15:41:53] - Memoria GPU allocata: 180.16 MB - Riservata: 28842.00 MB
+[2025-07-18 15:42:00] - Epoch 11/15 completed - Average Loss: 0.0794
+[2025-07-18 15:43:25] - Memoria GPU allocata: 180.16 MB - Riservata: 28842.00 MB
+[2025-07-18 15:43:32] - Epoch 12/15 completed - Average Loss: 0.0777
+[2025-07-18 15:44:57] - Memoria GPU allocata: 180.16 MB - Riservata: 28842.00 MB
+[2025-07-18 15:45:04] - Epoch 13/15 completed - Average Loss: 0.0765
+[2025-07-18 15:46:29] - Memoria GPU allocata: 180.16 MB - Riservata: 28842.00 MB
+[2025-07-18 15:46:36] - Epoch 14/15 completed - Average Loss: 0.0758
+[2025-07-18 15:48:02] - Memoria GPU allocata: 180.16 MB - Riservata: 28842.00 MB
+[2025-07-18 15:48:09] - Epoch 15/15 completed - Average Loss: 0.0748
+[2025-07-18 15:48:10] - Diffusion completed.
+Tempo impiegato per run_diffusion.py: 00:24:06
+
+--- Riepilogo Esecuzione Job ---
+Data e Ora Fine Esecuzione: Fri Jul 18 15:48:11 CEST 2025
+Tempo Totale Impiegato per il Job: 00:24:06
+------------------------------
