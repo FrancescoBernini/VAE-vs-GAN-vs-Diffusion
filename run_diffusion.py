@@ -7,7 +7,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 import imageio
 
-from torch.amp import autocast, GradScaler
+from torch.amp import autocast
 from denoising_diffusion_pytorch import Unet, GaussianDiffusion
 
 # For reproducibility
@@ -47,10 +47,9 @@ class SimpleDiffusion(nn.Module):
 # Model loading and training setup
 diffusion_model = SimpleDiffusion().to(device)
 optimizer = torch.optim.Adam(diffusion_model.parameters(), lr=1e-4 * 4) # x4 because 256/64=4 batch size 
-scaler = GradScaler(device="cuda")
 best_loss = float('inf')
 best_frame = None
-num_epochs = 50
+num_epochs = 200
 
 # Training
 log("Starting Diffusion training...")
@@ -61,11 +60,10 @@ for epoch in range(num_epochs):
     for i, imgs in enumerate(dataloader):
         imgs = imgs.to(device, non_blocking=True)
         optimizer.zero_grad()
-        with autocast(device_type="cuda", dtype=torch.float16): # maybe bfloat16 better on a100
+        with autocast(device_type="cuda", dtype=torch.bfloat16): # maybe bfloat16 better on modern gpus
             loss = diffusion_model(imgs)
-        scaler.scale(loss).backward()
-        scaler.step(optimizer)
-        scaler.update()
+        loss.backward()
+        optimizer.step()
         epoch_loss += loss.item()        
     # Epoch average losses    
     avg_loss = epoch_loss / len(dataloader)
@@ -73,7 +71,7 @@ for epoch in range(num_epochs):
     if torch.cuda.is_available():
         mem_alloc = torch.cuda.memory_allocated(device) / (1024 ** 2)
         mem_reserved = torch.cuda.memory_reserved(device) / (1024 ** 2)
-        log(f"Memoria GPU allocata: {mem_alloc:.2f} MB - Riservata: {mem_reserved:.2f} MB")
+        log(f"GPU memory allocated: {mem_alloc:.2f} MB - Reserved: {mem_reserved:.2f} MB")
 
     # Save the frame
     diffusion_model.eval()

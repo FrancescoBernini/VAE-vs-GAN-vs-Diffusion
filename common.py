@@ -96,3 +96,4 @@ def get_dataloader(data_dir, model_type):
 def get_fixed_noise(latent_dim=128, seed=42, device=None):
     torch.manual_seed(seed)
     return torch.randn(1, latent_dim, device=device)
+
