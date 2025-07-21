@@ -28,28 +28,35 @@ class SimpleVAE(nn.Module):
     def __init__(self, img_channels=3, latent_dim=128):
         super(SimpleVAE, self).__init__()
         # Encoder
-        self.encoder = nn.Sequential( # 2 convolutional layers for visual feature extraction + flattening
+        self.encoder = nn.Sequential( # 2 convolutional layers for visual feature 
+                                      # extraction + flattening
             nn.Conv2d(img_channels, 32, 4, 2, 1), nn.ReLU(),
             nn.Conv2d(32, 64, 4, 2, 1), nn.ReLU(),
             nn.Flatten()
         )
-        # 2 parallel and fully connected layers for the features vector mapping in a pdf (Gaussian) instead of a single point 
+        # 2 parallel and fully connected layers for the features vector mapping in a 
+        # pdf (Gaussian) instead of a single point 
         self.fc_mu = nn.Linear(64*16*16, latent_dim)     # means vector
-        self.fc_logvar = nn.Linear(64*16*16, latent_dim) # log-variances vector (log for an always positive variance)
+        self.fc_logvar = nn.Linear(64*16*16, latent_dim) # log-variances vector 
+                                                         # (log for an always positive
+                                                         # variance)
         # Decoder
         self.fc_decode = nn.Linear(latent_dim, 64*16*16)
         self.decoder = nn.Sequential( # inverse of the encoder
             nn.Unflatten(1, (64,16,16)),
             nn.ConvTranspose2d(64,32,4,2,1), nn.ReLU(),
-            nn.ConvTranspose2d(32,3,4,2,1), nn.Sigmoid() # to ensure output in a valid color range [0,1]
+            nn.ConvTranspose2d(32,3,4,2,1), nn.Sigmoid() # to ensure output in 
+                                                         # a valid color range [0,1]
         )
 
     def encode(self, x): # encode the input image into a Gaussian
         h = self.encoder(x)
         return self.fc_mu(h), self.fc_logvar(h)
     
-    def reparametrize(self, mu, logvar): # reparametrization trick to allow the backpropagation to flow 
-        std = torch.exp(0.5*logvar)      # through the non differentiable sampling step from the Gaussian
+    def reparametrize(self, mu, logvar): # reparametrization trick to allow the 
+                                         # backpropagation to flow 
+        std = torch.exp(0.5*logvar)      # through the non differentiable sampling
+                                         # step from the Gaussian
         eps = torch.randn_like(std)
         return mu + eps*std
     
@@ -80,9 +87,11 @@ for epoch in range(epochs):
     for imgs in dataloader:
         imgs = imgs.to(device)
         recons, mu, logvar = vae(imgs) # forward step with output images
-        recon_loss = nn.functional.mse_loss(recons, imgs) # L2 loss between original and reconstructed images
+        recon_loss = nn.functional.mse_loss(recons, imgs) # L2 loss between original 
+                                                          # and reconstructed images
         kld = -0.5 * torch.sum(1 + logvar - mu.pow(2) - logvar.exp()) / imgs.shape[0]
-        loss = recon_loss + 1e-3 * kld # Kullback-Leibler Divergence factor to push the pdf to the standard Gaussian
+        loss = recon_loss + 1e-3 * kld # Kullback-Leibler Divergence factor to push 
+                                       # the pdf to the standard Gaussian
         optimizer.zero_grad()
         loss.backward()
         optimizer.step()

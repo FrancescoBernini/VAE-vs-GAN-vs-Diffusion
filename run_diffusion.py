@@ -31,8 +31,8 @@ log(f"Dataset with {len(dataset)} images loaded from {data_dir}.")
 class SimpleDiffusion(nn.Module):
     def __init__(self, image_size=64, timesteps=1000, dim=64):
         super().__init__()
-        self.model = Unet(dim=dim, dim_mults=(1, 2, 4))
-        self.diffusion = GaussianDiffusion(
+        self.model = Unet(dim=dim, dim_mults=(1, 2, 4)) # dim_mults define the number of channels in each layer, here 64, 128, 256
+        self.diffusion = GaussianDiffusion( # a bit of noise is added in each one of the 1000 timesteps 
             self.model,
             image_size=image_size,
             timesteps=timesteps
@@ -60,8 +60,8 @@ for epoch in range(num_epochs):
     for i, imgs in enumerate(dataloader):
         imgs = imgs.to(device, non_blocking=True)
         optimizer.zero_grad()
-        with autocast(device_type="cuda", dtype=torch.bfloat16): # maybe bfloat16 better on modern gpus
-            loss = diffusion_model(imgs)
+        with autocast(device_type="cuda", dtype=torch.bfloat16): # bfloat16 better on modern gpus
+            loss = diffusion_model(imgs) # loss between the U-Net noise predictions and the actual noise
         loss.backward()
         optimizer.step()
         epoch_loss += loss.item()        

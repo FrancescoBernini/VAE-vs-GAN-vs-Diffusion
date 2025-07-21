@@ -27,7 +27,8 @@ log(f"Dataset with {len(dataset)} images loaded from {data_dir}.")
 class SimpleGenerator(nn.Module):
     def __init__(self, latent_dim=128):
         super(SimpleGenerator, self).__init__()
-        self.model = nn.Sequential( # inverse bottleneck architecture (128->512->256->...)
+        self.model = nn.Sequential( # inverse bottleneck architecture 
+                                    # (128->512->256->...)
             nn.ConvTranspose2d(latent_dim, 512, 4, 1, 0, bias=False),
             nn.BatchNorm2d(512), nn.ReLU(True),
             nn.ConvTranspose2d(512, 256, 4, 2, 1, bias=False),
@@ -37,7 +38,8 @@ class SimpleGenerator(nn.Module):
             nn.ConvTranspose2d(128, 64, 4, 2, 1, bias=False),
             nn.BatchNorm2d(64), nn.ReLU(True),
             nn.ConvTranspose2d(64, 3, 4, 2, 1, bias=False),
-            nn.Tanh() # for a more rapid convergence (needed previous normalization to [-1, 1] in the dataset)
+            nn.Tanh() # for a more rapid convergence (needed previous 
+                      # normalization to [-1, 1] in the dataset)
         )
 
     def forward(self, z):
@@ -49,7 +51,9 @@ class SimpleDiscriminator(nn.Module):
         super(SimpleDiscriminator, self).__init__()
         self.model = nn.Sequential( 
             nn.Conv2d(img_channels, 64, 4, 2, 1, bias=False),
-            nn.LeakyReLU(0.2, inplace=True), # for a little gradient also for negative inputs (no dying ReLUs)
+            nn.LeakyReLU(0.2, inplace=True), # for a little gradient 
+                                             # also for negative inputs 
+                                             # (no dying ReLUs)
             nn.Conv2d(64, 128, 4, 2, 1, bias=False),
             nn.BatchNorm2d(128), 
             nn.LeakyReLU(0.2, inplace=True),
