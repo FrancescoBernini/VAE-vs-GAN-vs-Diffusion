@@ -27,7 +27,7 @@ log(f"Dataset with {len(dataset)} images loaded from {data_dir}.")
 class SimpleGenerator(nn.Module):
     def __init__(self, latent_dim=128):
         super(SimpleGenerator, self).__init__()
-        self.model = nn.Sequential(
+        self.model = nn.Sequential( # inverse bottleneck architecture (128->512->256->...)
             nn.ConvTranspose2d(latent_dim, 512, 4, 1, 0, bias=False),
             nn.BatchNorm2d(512), nn.ReLU(True),
             nn.ConvTranspose2d(512, 256, 4, 2, 1, bias=False),
@@ -37,7 +37,7 @@ class SimpleGenerator(nn.Module):
             nn.ConvTranspose2d(128, 64, 4, 2, 1, bias=False),
             nn.BatchNorm2d(64), nn.ReLU(True),
             nn.ConvTranspose2d(64, 3, 4, 2, 1, bias=False),
-            nn.Tanh()
+            nn.Tanh() # for a more rapid convergence (needed previous normalization to [-1, 1] in the dataset)
         )
 
     def forward(self, z):
@@ -47,14 +47,15 @@ class SimpleGenerator(nn.Module):
 class SimpleDiscriminator(nn.Module):
     def __init__(self, img_channels=3):
         super(SimpleDiscriminator, self).__init__()
-        self.model = nn.Sequential(
+        self.model = nn.Sequential( 
             nn.Conv2d(img_channels, 64, 4, 2, 1, bias=False),
-            nn.LeakyReLU(0.2, inplace=True),
+            nn.LeakyReLU(0.2, inplace=True), # for a little gradient also for negative inputs (no dying ReLUs)
             nn.Conv2d(64, 128, 4, 2, 1, bias=False),
-            nn.BatchNorm2d(128), nn.LeakyReLU(0.2, inplace=True),
+            nn.BatchNorm2d(128), 
+            nn.LeakyReLU(0.2, inplace=True),
             nn.Flatten(),
             nn.Linear(128*16*16, 1),
-            nn.Sigmoid()
+            nn.Sigmoid() # for a probability output in [0, 1]
         )
 
     def forward(self, x):
@@ -65,7 +66,7 @@ generator = SimpleGenerator().to(device)
 discriminator = SimpleDiscriminator().to(device)
 optimizer_G = torch.optim.Adam(generator.parameters(), lr=0.0002, betas=(0.5, 0.999))
 optimizer_D = torch.optim.Adam(discriminator.parameters(), lr=0.0001, betas=(0.5, 0.999))
-loss_fn = nn.BCELoss()
+loss_fn = nn.BCELoss() # Binary Cross Entropy Loss for binary classification (real vs fake)
 best_loss_g = float('inf')
 best_frame = None
 latent_dim = 128
@@ -74,7 +75,7 @@ epochs = 200
 # Training
 log("Starting GAN training...")
 frames = []
-z_fixed = torch.randn(1, latent_dim, 1, 1, device=device)
+z_fixed = torch.randn(1, latent_dim, 1, 1, device=device) # Created once and used throughout training
 generator.train()
 discriminator.train()
 for epoch in range(epochs):
@@ -88,21 +89,21 @@ for epoch in range(epochs):
         # Train Generator
         optimizer_G.zero_grad()
         z = torch.randn(batch_size, latent_dim, 1, 1, device=device)
-        gen_imgs = generator(z)
+        gen_imgs = generator(z) # Generate fake images
         validity = discriminator(gen_imgs)
-        g_loss = loss_fn(validity, real_labels_smoothed)
+        g_loss = loss_fn(validity, real_labels_smoothed) # update the loss to reward generator if the generated images are classified as real
         g_loss.backward()
         optimizer_G.step()        
         # Train Discriminator
         optimizer_D.zero_grad()        
         noise = torch.randn_like(imgs) * 0.005 
-        imgs_noisy = imgs + noise # Adding noise to real images
+        imgs_noisy = imgs + noise # adding noise to real images to make the training more robust putting the discriminator in a more difficult situation
         imgs_noisy = torch.clamp(imgs_noisy, -1.0, 1.0) 
         real_validity = discriminator(imgs_noisy)      
-        d_real_loss = loss_fn(real_validity, real_labels_smoothed)
-        fake_validity = discriminator(gen_imgs.detach())
-        d_fake_loss = loss_fn(fake_validity, fake_labels_smoothed)
-        d_loss = (d_real_loss + d_fake_loss) / 2
+        d_real_loss = loss_fn(real_validity, real_labels_smoothed) # update the r_loss to reward discriminator if the real images are classified as real
+        fake_validity = discriminator(gen_imgs.detach()) # detach to avoid backpropagation through the generator that has already been updated
+        d_fake_loss = loss_fn(fake_validity, fake_labels_smoothed) # update the f_loss to reward discriminator if the fake images are classified as fake
+        d_loss = (d_real_loss + d_fake_loss) / 2 # discriminator loss is the average of real and fake losses
         d_loss.backward()
         optimizer_D.step()
         epoch_loss_g += g_loss.item()
